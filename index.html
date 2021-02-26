@@ -1,0 +1,357 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+    <title></title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <link type="text/css" rel="stylesheet" href="./css/slider.css" />
+    <link type="text/css" rel="stylesheet" href="./css/style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <script src="./lib/jquery.js"></script>
+    <script src="./lib/jquery-ui.js"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="./js/rangeslider.js"></script>
+    <script src="./draw2d.js"></script>
+    <script src="./js/OR.js"></script>
+    <script src="./js/AND.js"></script>
+    <script src="./js/SAND.js"></script>
+    <script src="./js/TOPEVENT.js"></script>
+    <script src="./js/ATTACKEVENT.JS"></script>
+    <script src="./js/FAILUREEVENT.js"></script>
+    <script src="./js/DecoratedInputPort.js"></script>
+    <script src="./js/MarkerStateAFigure.js"></script>
+    <script src="./js/MarkerStateBFigure.js"></script>
+    <script src="./js/MarkerFigure.js"></script>
+    <script src="./js/SelectionMenuPolicy.js"></script>
+    <script src="./js/propertypane.js"></script>
+    <script type="text/javascript">
+        var textFigure = null;
+        var canvas = null;
+        var label = null;
+        var line = null;
+        var circle = null;
+
+        const MOUSESTATUS = {
+            mode: "SELECT"
+        };
+
+        function stepMap(key) {
+            MOUSESTATUS.mode = key;
+        }
+
+
+        document.addEventListener("DOMContentLoaded", function() {
+
+
+            rangeSlider();
+
+            canvas = new draw2d.Canvas("gfx_holder");
+            canvas.installEditPolicy(new draw2d.policy.canvas.FadeoutDecorationPolicy());
+            // canvas.installEditPolicy(new draw2d.policy.canvas.SnapToGridEditPolicy())
+            properties = new PropertyPane("properties", canvas);
+
+
+            // // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
+            // var msg = new draw2d.shape.note.PostIt({
+            //     text: "Mouse over to the input ports to see InputPort decorations for default values.\nCan be used for circuits or workflow diagrams.\n \n - Decoration is hidden if a connection is present.\n - Change the default value if you click on the label.\n - Stick/Unstick the decoration with a click on the circle.",
+            //     x: 20,
+            //     y: 20
+            // });
+            // canvas.add(msg);
+
+            // create a default JSON reader
+            var reader = new draw2d.io.json.Reader();
+            // reader.unmarshal(canvas, lineJson);
+
+
+            displayJSON(canvas);
+
+
+            canvas.getCommandStack().addEventListener(function(e) {
+                if (e.isPostChangeEvent()) {
+                    displayJSON(canvas);
+                }
+            });
+
+            document.addEventListener("keydown", function(e) {
+
+                if (e.key == "q") {
+                    MOUSESTATUS.mode = "OR";
+                }
+                if (e.key == "w") {
+                    MOUSESTATUS.mode = "AND";
+                }
+                if (e.key == "e") {
+                    MOUSESTATUS.mode = "SAN";
+                }
+                if (e.key == "r") {
+                    MOUSESTATUS.mode = "ATK";
+                }
+                if (e.key == "t") {
+                    MOUSESTATUS.mode = "FAI";
+                }
+                if (e.key == "y") {
+                    MOUSESTATUS.mode = "TOP";
+                }
+
+            });
+
+
+
+            document.addEventListener("click", function(e) {
+
+                if (MOUSESTATUS.mode === "OR") {
+                    canvas.add(f2 = new OR({
+                        x: Math.round(e.clientX / 10) * 10,
+                        y: Math.round(e.clientY / 10) * 10,
+                        A: Math.floor(Math.random() * 10),
+                        B: Math.floor(Math.random() * 10)
+
+                    }));
+
+                    MOUSESTATUS.mode = "SELECT";
+                }
+
+                if (MOUSESTATUS.mode === "AND") {
+                    canvas.add(f2 = new AND({
+                        x: Math.round(e.clientX / 10) * 10,
+                        y: Math.round(e.clientY / 10) * 10,
+                        A: Math.floor(Math.random() * 10),
+                        B: Math.floor(Math.random() * 10)
+
+                    }));
+
+                    MOUSESTATUS.mode = "SELECT";
+                }
+
+                if (MOUSESTATUS.mode === "SAN") {
+                    canvas.add(f2 = new SAND({
+                        x: Math.round(e.clientX / 10) * 10,
+                        y: Math.round(e.clientY / 10) * 10,
+                        A: Math.floor(Math.random() * 10),
+                        B: Math.floor(Math.random() * 10)
+
+                    }));
+
+                    MOUSESTATUS.mode = "SELECT";
+                }
+
+                if (MOUSESTATUS.mode === "ATK") {
+                    canvas.add(f2 = new ATTACKEVENT({
+                        x: Math.round(e.clientX / 10) * 10,
+                        y: Math.round(e.clientY / 10) * 10,
+                        meanTTA: {
+                            value: 0,
+                            type: 'SLIDER',
+                            name: 'Mean Time to Attack',
+                            min: 0,
+                            max: 365,
+                            step: 1
+                        },
+                        detectionPercent: {
+                            value: 0,
+                            type: 'SLIDER',
+                            name: 'Detection Percent',
+                            min: 0,
+                            max: 100,
+                            step: 10
+                        },
+                        fixedCOA: {
+                            value: 0,
+                            type: 'NUMBER',
+                            name: 'Fixed Cost of Attack',
+                            min: 0,
+                            max: 365,
+                            step: 1
+                        },
+                        fixedDMG: {
+                            value: 0,
+                            type: 'NUMBER',
+                            name: 'Fixed Damage',
+                            min: 0,
+                            max: 10000,
+                            step: 1
+                        },
+                        detection: {
+                            value: 0,
+                            type: 'NUMBER',
+                            name: 'Detection',
+                            min: 0,
+                            max: 1,
+                            step: 1
+                        },
+                        detectTime: {
+                            value: 0,
+                            type: 'NUMBER',
+                            name: 'Detection Time',
+                            min: 0,
+                            max: 365,
+                            step: 1
+                        },
+                        repairCost: {
+                            value: 0,
+                            type: 'NUMBER',
+                            name: 'Repair Cost',
+                            min: 0,
+                            max: 100000,
+                            step: 1
+                        }
+
+                    }));
+                    MOUSESTATUS.mode = "SELECT";
+                }
+                if (MOUSESTATUS.mode === "FAI") {
+                    canvas.add(f2 = new FAILUREEVENT({
+                        x: Math.round(e.clientX / 10) * 10,
+                        y: Math.round(e.clientY / 10) * 10,
+                        noOfPhases: {
+                            value: 0,
+                            type: 'SLIDER',
+                            name: 'No of Phases',
+                            min: 0,
+                            max: 12,
+                            step: 1
+                        },
+                        thresholdPhase: {
+                            value: 0,
+                            type: 'SLIDER',
+                            name: 'Threshhold Phase',
+                            min: 0,
+                            max: 12,
+                            step: 1
+                        },
+                        meanTTF: {
+                            value: 0,
+                            type: 'NUMBER',
+                            name: 'Mean time to Failure',
+                            min: 0,
+                            max: 365,
+                            step: 3
+                        },
+                        repairCost: {
+                            value: 0,
+                            type: 'NUMBER',
+                            name: 'Repair Cost',
+                            min: 0,
+                            max: 10000,
+                            step: 1
+                        }
+
+                    }));
+
+                    MOUSESTATUS.mode = "SELECT";
+                }
+
+                if (MOUSESTATUS.mode === "TOP") {
+                    canvas.add(f2 = new TOPEVENT({
+                        x: Math.round(e.clientX / 10) * 10,
+                        y: Math.round(e.clientY / 10) * 10
+
+                    }));
+
+                    MOUSESTATUS.mode = "SELECT";
+                }
+
+            });
+        });
+
+        function displayJSON(canvas) {
+            var writer = new draw2d.io.json.Writer();
+            writer.marshal(canvas, function(json) {
+                $("#json").text(JSON.stringify(json, null, 2));
+            });
+        }
+    </script>
+
+</head>
+
+<body style="overflow-y: hidden;" id="cursortooltip">
+
+    <div style="width: 100%;height: 100%;">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+                <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Dropdown
+                    </a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink" id="steps">
+                                <li><a class="dropdown-item" href="#" onclick="stepMap('OR');">OR(Q)</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="stepMap('AND');">AND(W)</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="stepMap('SAN');">SAND(E)</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="stepMap('TOP');">Top Event(R)</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="stepMap('ATK');">Attack Event(T)</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="stepMap('FAI');">Failure Event(Y)</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#aboutModal"> About </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="aboutModalLabel">About</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                ...
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#infoModal" style="margin-left: 10px;"> info </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="infoModalLabel">Info</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                ...
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:100vw; height:100vh;">
+        </div>
+        <div style="width: 300px;   height: 100%;  right: 0; z-index: 1000;   top: 0; 
+        margin-top: 3.5rem;  position: absolute;  background: white;border-left: 4px solid #2c3e50;" id="propertybar">
+
+        </div>
+    </div>
+
+    <pre id="json" style="overflow:auto;position:absolute; bottom:10px; ;left:10px; width:450; height:500;background:white;border:1px solid gray">
+</pre>
+</body>
+
+</html>
