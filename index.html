@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
     <script src="./lib/jquery.js"></script>
     <script src="./lib/jquery-ui.js"></script>
+    <script src="./js/jquery.browser.js"></script>
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
     <script src="./js/rangeslider.js"></script>
@@ -28,6 +29,7 @@
     <script src="./js/MarkerStateAFigure.js"></script>
     <script src="./js/MarkerStateBFigure.js"></script>
     <script src="./js/MarkerFigure.js"></script>
+    <script src="./js/view.js"></script>
     <script src="./js/SelectionMenuPolicy.js"></script>
     <script src="./js/propertypane.js"></script>
     <script type="text/javascript">
@@ -50,10 +52,19 @@
 
 
             rangeSlider();
-
-            canvas = new draw2d.Canvas("gfx_holder");
+            let createConnection = function() {
+                let con = new draw2d.Connection();
+                con.setRouter(new draw2d.layout.connection.CircuitConnectionRouter());
+                return con;
+            };
+            canvas = new View("gfx_holder");
             canvas.installEditPolicy(new draw2d.policy.canvas.FadeoutDecorationPolicy());
-            // canvas.installEditPolicy(new draw2d.policy.canvas.SnapToGridEditPolicy())
+            canvas.installEditPolicy(new draw2d.policy.connection.DragConnectionCreatePolicy({
+                createConnection: createConnection
+            }));
+            canvas.installEditPolicy(new draw2d.policy.canvas.WheelZoomPolicy());
+            canvas.setScrollArea("gfx_holder");
+            canvas.installEditPolicy(new draw2d.policy.canvas.SnapToGridEditPolicy())
             properties = new PropertyPane("properties", canvas);
 
 
@@ -276,7 +287,7 @@
     <div style="width: 100%;height: 100%;">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Navbar</a>
+                <a class="navbar-brand" href="#">Drawing Tool</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -284,7 +295,7 @@
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Dropdown
+                      Nodes
                     </a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink" id="steps">
                                 <li><a class="dropdown-item" href="#" onclick="stepMap('OR');">OR(Q)</a></li>
@@ -297,8 +308,39 @@
                         </li>
                     </ul>
                 </div>
+                <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Example Trees
+                    </a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink" id="steps">
+                                <li><a class="dropdown-item" href="#" onclick="stepMap('OR');">Example 1</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="stepMap('AND');">Example 2</a></li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            View Results
+                    </a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink" id="steps">
+                                <li><a class="dropdown-item" href="#" onclick="stepMap('OR');">Result 1</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="stepMap('AND');">Result 2</a></li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <button type="button" class="btn btn-secondary" style="margin-left: 10px;"> Upload Attack Tree </button>
+                <button type="button" class="btn btn-secondary" style="margin-left: 10px;"> Download Attack Tree </button>
+                <button type="button" class="btn btn-secondary" style="margin-left: 10px;"> Run </button>
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#aboutModal"> About </button>
+                <button type="button" style="margin-left: 10px;" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#aboutModal"> About </button>
 
                 <!-- Modal -->
                 <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
@@ -313,21 +355,20 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#infoModal" style="margin-left: 10px;"> info </button>
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#infoModal" style="margin-left: 10px;"> Documentation </button>
 
                 <!-- Modal -->
                 <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="infoModalLabel">Info</h5>
+                                <h5 class="modal-title" id="infoModalLabel">Documentation</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
@@ -335,7 +376,6 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
                             </div>
                         </div>
                     </div>
@@ -348,10 +388,21 @@
         margin-top: 3.5rem;  position: absolute;  background: white;border-left: 4px solid #2c3e50;" id="propertybar">
 
         </div>
+
+        <div style="width: 150px;   height: 100%;  left: 0; z-index: 1000;   top: 0; 
+        margin-top: 3.5rem;  position: absolute;  background: white;border-right: 4px solid #2c3e50;">
+            <div data-shape="ATK" class="palette_node_element draw2d_droppable" title="drag&amp;drop the table into the canvas..">ATTACK EVENT</div>
+            <div data-shape="FAI" class="palette_node_element draw2d_droppable" title="drag&amp;drop the table into the canvas..">FAILURE EVENT</div>
+            <div data-shape="OR" class="palette_node_element draw2d_droppable" title="drag&amp;drop the table into the canvas..">OR GATE</div>
+            <div data-shape="AND" class="palette_node_element draw2d_droppable" title="drag&amp;drop the table into the canvas..">AND GATE</div>
+            <div data-shape="SAND" class="palette_node_element draw2d_droppable" title="drag&amp;drop the table into the canvas..">SAND GATE</div>
+            <div data-shape="TOP" class="palette_node_element draw2d_droppable" title="drag&amp;drop the table into the canvas..">TOP EVENT</div>
+            <!-- <div data-shape="ATTACKEVENT" class="palette_node_element draw2d_droppable" title="drag&amp;drop the table into the canvas..">ATTACK EVENT</div> -->
+        </div>
     </div>
 
-    <pre id="json" style="overflow:auto;position:absolute; bottom:10px; ;left:10px; width:450; height:500;background:white;border:1px solid gray">
-</pre>
+    <!-- <pre id="json" style="overflow:auto;position:absolute; bottom:10px; ;left:10px; width:450; height:500;background:white;border:1px solid gray"> -->
+    <!-- </pre> -->
 </body>
 
 </html>
