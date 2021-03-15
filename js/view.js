@@ -25,7 +25,7 @@ View = draw2d.Canvas.extend({
         // console.log(droppedDomNode, x, y);
         var type = $(droppedDomNode).data("shape");
         if (type == 'OR') {
-            var figure = canvas.add(f2 = new OR({
+            canvas.add(f2 = new OR({
                 x: Math.round(x / 10) * 10,
                 y: Math.round(y / 10) * 10,
                 A: Math.floor(Math.random() * 10),
@@ -36,7 +36,7 @@ View = draw2d.Canvas.extend({
         }
 
         if (type == 'AND') {
-            var figure = canvas.add(f2 = new AND({
+            canvas.add(f2 = new AND({
                 x: Math.round(x / 10) * 10,
                 y: Math.round(y / 10) * 10,
                 A: Math.floor(Math.random() * 10),
@@ -102,7 +102,15 @@ View = draw2d.Canvas.extend({
         if (type == 'TOP') {
             canvas.add(f2 = new TOPEVENT({
                 x: Math.round(x / 10) * 10,
-                y: Math.round(y / 10) * 10
+                y: Math.round(y / 10) * 10,
+                inspFreq: {
+                    value: 0,
+                    type: 'NUMBER',
+                    name: 'Inspection Frequency',
+                    min: 0,
+                    max: 10000,
+                    step: 1
+                }
 
             }));
         }
@@ -143,13 +151,15 @@ View = draw2d.Canvas.extend({
                     max: 10000,
                     step: 1
                 },
+                enable: {
+                    value: true,
+                    type: 'BOOL',
+                    name: 'enable'
+                },
                 detection: {
-                    value: 0,
-                    type: 'NUMBER',
-                    name: 'Detection',
-                    min: 0,
-                    max: 1,
-                    step: 1
+                    value: true,
+                    type: 'BOOL',
+                    name: 'Detection'
                 },
                 detectTime: {
                     value: 0,

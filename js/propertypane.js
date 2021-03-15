@@ -56,11 +56,22 @@ PropertyPane = Class.extend({
                 if (userData[x]) {
                     // html += ''
                     if (userData[x]['type'] == 'NUMBER') {
-                        html += '<h4 style="margin:10px;" id="title' + x + '" > ' + userData[x]['name'] + '</h4><div class="input-container"><input type="number" id="property' + x + '" value="' + userData[x]['value'] + '" min="' + userData[x]['min'] + '" max="' + userData[x]['max'] + '" step="' + userData[x]['step'] + '"> <span class="control increase"></span> <span class="control decrease"></span> </div>'
+                        html += '<h4 style="margin-left:10px;" id="title' + x + '" > ' + userData[x]['name'] + '</h4><div class="input-container"><input type="number" id="property' + x + '" value="' + userData[x]['value'] + '" min="' + userData[x]['min'] + '" max="' + userData[x]['max'] + '" step="' + userData[x]['step'] + '"> <span class="control increase"></span> <span class="control decrease"></span> </div>'
                     }
 
                     if (userData[x]['type'] == 'SLIDER') {
-                        html += '<h4 style="margin:10px;" id="title' + x + '" > ' + userData[x]['name'] + '</h4><div class="range-slider"><input id="property' + x + '" class="range-slider__range" type="range" step=' + userData[x]['step'] + ' value="' + userData[x]['value'] + '" min="' + userData[x]['min'] + '" max="' + userData[x]['max'] + '"><span class="range-slider__value">' + userData[x]['value'] + '</span></div>'
+                        html += '<h4 style="margin-left:10px;" id="title' + x + '" > ' + userData[x]['name'] + '</h4><div class="range-slider"><input id="property' + x + '" class="range-slider__range" type="range" step=' + userData[x]['step'] + ' value="' + userData[x]['value'] + '" min="' + userData[x]['min'] + '" max="' + userData[x]['max'] + '"><span class="range-slider__value">' + userData[x]['value'] + '</span></div>'
+
+                    }
+
+                    if (userData[x]['type'] == 'BOOL') {
+                        if (userData[x]['value']) {
+                            html += '<h4 style="margin-left:10px;" id="title' + x + '" > ' + userData[x]['name'] + '</h4><label class="switch"><input checked id="property' + x + '"  type="checkbox"><span class="slider"></span></label>'
+
+                        } else {
+                            html += '<h4 style="margin-left:10px;" id="title' + x + '" > ' + userData[x]['name'] + '</h4><label class="switch"><input id="property' + x + '"  type="checkbox"><span class="slider"></span></label>'
+
+                        }
 
                     }
                 }
@@ -122,70 +133,91 @@ PropertyPane = Class.extend({
                         }
                     }
                     // console.log($("#propertymeanTTF").val(), $("#propertymeanTTF").attr("value"), $("#propertynoOfPhases").attr("min"), $("#propertynoOfPhases").attr("step"));
-                console.log();
+
+                figure.setProperties(attr);
+            }
+
+            if (figure['cssClass'] === 'TOP EVENT') {
+                let attr = {
+
+                        inspFreq: {
+                            value: $("#propertyinspFreq").val(),
+                            type: 'NUMBER',
+                            name: $("#titleinspFreq").text(),
+                            min: $("#propertyinspFreq").attr('min'),
+                            max: $("#propertyinspFreq").attr('max'),
+                            step: $("#propertyinspFreq").attr('step')
+                        },
+                    }
+                    // console.log($("#propertymeanTTF").val(), $("#propertymeanTTF").attr("value"), $("#propertynoOfPhases").attr("min"), $("#propertynoOfPhases").attr("step"));
+
                 figure.setProperties(attr);
             }
 
             if (figure['cssClass'] === 'ATTACK EVENT') {
                 let attr = {
-                        meanTTA: {
-                            value: $("#propertymeanTTA").val(),
-                            type: 'SLIDER',
-                            name: $("#titlemeanTTA").text(),
-                            min: $("#propertymeanTTA").attr("min"),
-                            max: $("#propertymeanTTA").attr("max"),
-                            step: $("#propertymeanTTA").attr("step")
-                        },
-                        detectionPercent: {
-                            value: $("#propertydetectionPercent").val(),
-                            type: 'SLIDER',
-                            name: $("#titledetectionPercent").text(),
-                            min: $("#propertydetectionPercent").attr("min"),
-                            max: $("#propertydetectionPercent").attr("max"),
-                            step: $("#propertydetectionPercent").attr("step")
-                        },
-                        fixedCOA: {
-                            value: $("#propertyfixedCOA").val(),
-                            type: 'NUMBER',
-                            name: $("#titlefixedCOA").text(),
-                            min: $("#propertyfixedCOA").attr('min'),
-                            max: $("#propertyfixedCOA").attr('max'),
-                            step: $("#propertyfixedCOA").attr('step')
-                        },
-                        fixedDMG: {
-                            value: $("#propertyfixedDMG").val(),
-                            type: 'NUMBER',
-                            name: $("#titlefixedDMG").text(),
-                            min: $("#propertyfixedDMG").attr('min'),
-                            max: $("#propertyfixedDMG").attr('max'),
-                            step: $("#propertyfixedDMG").attr('step')
-                        },
-                        detection: {
-                            value: $("#propertydetection").val(),
-                            type: 'NUMBER',
-                            name: $("#titledetection").text(),
-                            min: $("#propertydetection").attr('min'),
-                            max: $("#propertydetection").attr('max'),
-                            step: $("#propertydetection").attr('step')
-                        },
-                        detectTime: {
-                            value: $("#propertydetectTime").val(),
-                            type: 'NUMBER',
-                            name: $("#titledetectTime").text(),
-                            min: $("#propertydetectTime").attr('min'),
-                            max: $("#propertydetectTime").attr('max'),
-                            step: $("#propertydetectTime").attr('step')
-                        },
-                        repairCost: {
-                            value: $("#propertyrepairCost").val(),
-                            type: 'NUMBER',
-                            name: $("#titlerepairCost").text(),
-                            min: $("#propertyrepairCost").attr('min'),
-                            max: $("#propertyrepairCost").attr('max'),
-                            step: $("#propertyrepairCost").attr('step')
-                        }
+                    meanTTA: {
+                        value: $("#propertymeanTTA").val(),
+                        type: 'SLIDER',
+                        name: $("#titlemeanTTA").text(),
+                        min: $("#propertymeanTTA").attr("min"),
+                        max: $("#propertymeanTTA").attr("max"),
+                        step: $("#propertymeanTTA").attr("step")
+                    },
+                    detectionPercent: {
+                        value: $("#propertydetectionPercent").val(),
+                        type: 'SLIDER',
+                        name: $("#titledetectionPercent").text(),
+                        min: $("#propertydetectionPercent").attr("min"),
+                        max: $("#propertydetectionPercent").attr("max"),
+                        step: $("#propertydetectionPercent").attr("step")
+                    },
+                    fixedCOA: {
+                        value: $("#propertyfixedCOA").val(),
+                        type: 'NUMBER',
+                        name: $("#titlefixedCOA").text(),
+                        min: $("#propertyfixedCOA").attr('min'),
+                        max: $("#propertyfixedCOA").attr('max'),
+                        step: $("#propertyfixedCOA").attr('step')
+                    },
+                    fixedDMG: {
+                        value: $("#propertyfixedDMG").val(),
+                        type: 'NUMBER',
+                        name: $("#titlefixedDMG").text(),
+                        min: $("#propertyfixedDMG").attr('min'),
+                        max: $("#propertyfixedDMG").attr('max'),
+                        step: $("#propertyfixedDMG").attr('step')
+                    },
+                    detection: {
+                        value: $("#propertydetection").val(),
+                        value: $("#propertydetection").is(':checked'),
+                        type: 'BOOL',
+                        name: $("#titledetection").text()
+                    },
+                    enable: {
+                        value: $("#propertyenable").is(':checked'),
+                        type: 'BOOL',
+                        name: $("#titleenable").text()
+                    },
+                    detectTime: {
+                        value: $("#propertydetectTime").val(),
+                        type: 'NUMBER',
+                        name: $("#titledetectTime").text(),
+                        min: $("#propertydetectTime").attr('min'),
+                        max: $("#propertydetectTime").attr('max'),
+                        step: $("#propertydetectTime").attr('step')
+                    },
+                    repairCost: {
+                        value: $("#propertyrepairCost").val(),
+                        type: 'NUMBER',
+                        name: $("#titlerepairCost").text(),
+                        min: $("#propertyrepairCost").attr('min'),
+                        max: $("#propertyrepairCost").attr('max'),
+                        step: $("#propertyrepairCost").attr('step')
                     }
-                    // console.log($("#propertymeanTTF").val(), $("#propertymeanTTF").attr("value"), $("#propertynoOfPhases").attr("min"), $("#propertynoOfPhases").attr("step"));
+                }
+                console.log($("#propertyenable").is(':checked'));
+                // console.log($("#propertymeanTTF").val(), $("#propertymeanTTF").attr("value"), $("#propertynoOfPhases").attr("min"), $("#propertynoOfPhases").attr("step"));
                 figure.setProperties(attr);
             }
 

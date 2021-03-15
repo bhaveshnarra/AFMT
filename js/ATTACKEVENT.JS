@@ -30,11 +30,12 @@ var ATTACKEVENT = draw2d.shape.basic.Rectangle.extend({
             fixedCOA: attr.fixedCOA,
             fixedDMG: attr.fixedDMG,
             detection: attr.detection,
+            enable: attr.enable,
             detectTime: attr.detectTime,
             repairCost: attr.repairCost
         }
         this.createPort("output", new MyOutputPortLocator());
-
+        this.userData["Label"] = "ATTACK EVENT"
         this.classLabel = new draw2d.shape.basic.Label({
             text: "ATTACK Label",
             stroke: 1,
@@ -77,15 +78,15 @@ var ATTACKEVENT = draw2d.shape.basic.Rectangle.extend({
 
     setProperties: function(attr) {
         this.userData = {
-                meanTTA: attr.meanTTA,
-                detectionPercent: attr.detectionPercent,
-                fixedCOA: attr.fixedCOA,
-                fixedDMG: attr.fixedDMG,
-                detection: attr.detection,
-                detectTime: attr.detectTime,
-                repairCost: attr.repairCost
-            }
-            // console.log(this.userData);
+            meanTTA: attr.meanTTA,
+            detectionPercent: attr.detectionPercent,
+            fixedCOA: attr.fixedCOA,
+            fixedDMG: attr.fixedDMG,
+            detection: attr.detection,
+            enable: attr.enable,
+            detectTime: attr.detectTime,
+            repairCost: attr.repairCost
+        }
     }
 
 

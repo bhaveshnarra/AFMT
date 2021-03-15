@@ -34,7 +34,7 @@ var OR = draw2d.SVGFigure.extend({
 
 
         this.userData = {};
-
+        this.userData["Label"] = "OR Gate"
         var MyOutputPortLocator = draw2d.layout.locator.PortLocator.extend({
             init: function() {
                 this._super();

@@ -31,7 +31,7 @@ var FAILUREEVENT = draw2d.shape.basic.Oval.extend({
             repairCost: attr.repairCost
         }
         this.createPort("output", new MyOutputPortLocator());
-
+        this.userData["Label"] = "FAILURE EVENT"
         this.classLabel = new draw2d.shape.basic.Label({
             text: "FAILURE Label",
             stroke: 1,

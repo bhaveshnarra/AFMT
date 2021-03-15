@@ -38,6 +38,11 @@ var TOPEVENT = draw2d.shape.basic.Diamond.extend({
             })
         });
 
+
+        this.userData = {
+            inspFreq: attr.inspFreq
+        }
+        this.userData["Label"] = "TOP EVENT"
         this.add(this.classLabel, new draw2d.layout.locator.RightLocator());
 
     },
@@ -66,9 +71,7 @@ var TOPEVENT = draw2d.shape.basic.Diamond.extend({
 
     setProperties: function(attr) {
         this.userData = {
-            A: attr.A,
-            B: attr.B,
-            C: attr.C
+            inspFreq: attr.inspFreq
         }
         console.log(this.userData);
     }

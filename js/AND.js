@@ -3,15 +3,6 @@ var AND = draw2d.SVGFigure.extend({
     init: function(attr, setter, getter) {
         this.svg1 = '<svg width="70px" height="70px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" > <path id="lineAB" d="M 2 98 Q 0 0 50 2" stroke="black" stroke-width="5" fill="none" /> <path id="lineBC" d="M 50 2 Q 100 0 98 100" stroke="black" stroke-width="5" fill="none" /> <path d="M 0 98 L 100 98" stroke="black" stroke-width="5" fill="none" /> <g stroke="black" stroke-width="3" fill="black"> <circle id="pointA" cx="0" cy="100" r="1" /> <circle id="pointB" cx="50" cy="0" r="1" /> <circle id="pointC" cx="100" cy="100" r="1" /> </g> </svg>';
 
-        // this._super(
-        //     $.extend({
-        //         width: 100,
-        //         height: 100,
-        //         x: 100,
-        //         y: 100
-        //     }, attr),
-        //     setter,
-        //     getter);
         this._super($.extend({ svg: this.svg1, width: 70, height: 70 }, attr), getter, setter);
         this.installEditPolicy(new SelectionMenuPolicy());
 
@@ -51,7 +42,7 @@ var AND = draw2d.SVGFigure.extend({
         this.createPort("input", new MyInputPortLocator());
         this.createPort("input", new MyInputPortLocator2());
         this.createPort("output", new MyOutputPortLocator());
-
+        this.userData["Label"] = "AND Gate"
         this.classLabel = new draw2d.shape.basic.Label({
             text: "AND Label",
             stroke: 1,
