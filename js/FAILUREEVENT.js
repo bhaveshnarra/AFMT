@@ -23,15 +23,18 @@ var FAILUREEVENT = draw2d.shape.basic.Oval.extend({
                 this.applyConsiderRotation(figure, p.getWidth() / 2, 0);
             }
         });
-
+        this.Label = "FAILURE EVENT"
         this.userData = {
+            Label: this.Label,
             noOfPhases: attr.noOfPhases,
             thresholdPhase: attr.thresholdPhase,
             meanTTF: attr.meanTTF,
-            repairCost: attr.repairCost
+            repairCost: attr.repairCost,
+            repairTime: attr.repairTime,
+            failureProbability: attr.failureProbability
         }
         this.createPort("output", new MyOutputPortLocator());
-        this.userData["Label"] = "FAILURE EVENT"
+
         this.classLabel = new draw2d.shape.basic.Label({
             text: "FAILURE Label",
             stroke: 1,
@@ -74,10 +77,13 @@ var FAILUREEVENT = draw2d.shape.basic.Oval.extend({
 
     setProperties: function(attr) {
         this.userData = {
+                Label: this.Label,
                 noOfPhases: attr.noOfPhases,
                 thresholdPhase: attr.thresholdPhase,
                 meanTTF: attr.meanTTF,
-                repairCost: attr.repairCost
+                repairCost: attr.repairCost,
+                repairTime: attr.repairTime,
+                failureProbability: attr.failureProbability
             }
             // console.log(this.userData);
     }

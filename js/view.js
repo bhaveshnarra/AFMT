@@ -93,6 +93,22 @@ View = draw2d.Canvas.extend({
                     min: 0,
                     max: 10000,
                     step: 1
+                },
+                repairTime: {
+                    value: 0,
+                    type: 'NUMBER',
+                    name: 'Repair Time',
+                    min: 0,
+                    max: 100000,
+                    step: 1
+                },
+                failureProbability: {
+                    value: 0,
+                    type: 'NUMBER',
+                    name: 'Failure Probability',
+                    min: 0,
+                    max: 100,
+                    step: 1
                 }
 
             }));
@@ -173,6 +189,14 @@ View = draw2d.Canvas.extend({
                     value: 0,
                     type: 'NUMBER',
                     name: 'Repair Cost',
+                    min: 0,
+                    max: 100000,
+                    step: 1
+                },
+                repairTime: {
+                    value: 0,
+                    type: 'NUMBER',
+                    name: 'Repair Time',
                     min: 0,
                     max: 100000,
                     step: 1

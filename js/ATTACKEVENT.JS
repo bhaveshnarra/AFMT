@@ -23,8 +23,10 @@ var ATTACKEVENT = draw2d.shape.basic.Rectangle.extend({
                 this.applyConsiderRotation(figure, p.getWidth() / 2, 0);
             }
         });
+        this.Label = "ATTACK EVENT"
 
         this.userData = {
+            Label: this.Label,
             meanTTA: attr.meanTTA,
             detectionPercent: attr.detectionPercent,
             fixedCOA: attr.fixedCOA,
@@ -32,10 +34,10 @@ var ATTACKEVENT = draw2d.shape.basic.Rectangle.extend({
             detection: attr.detection,
             enable: attr.enable,
             detectTime: attr.detectTime,
-            repairCost: attr.repairCost
+            repairCost: attr.repairCost,
+            repairTime: attr.repairTime
         }
         this.createPort("output", new MyOutputPortLocator());
-        this.userData["Label"] = "ATTACK EVENT"
         this.classLabel = new draw2d.shape.basic.Label({
             text: "ATTACK Label",
             stroke: 1,
@@ -77,7 +79,9 @@ var ATTACKEVENT = draw2d.shape.basic.Rectangle.extend({
     },
 
     setProperties: function(attr) {
+        console.log(this.Label);
         this.userData = {
+            Label: this.Label,
             meanTTA: attr.meanTTA,
             detectionPercent: attr.detectionPercent,
             fixedCOA: attr.fixedCOA,
@@ -85,7 +89,8 @@ var ATTACKEVENT = draw2d.shape.basic.Rectangle.extend({
             detection: attr.detection,
             enable: attr.enable,
             detectTime: attr.detectTime,
-            repairCost: attr.repairCost
+            repairCost: attr.repairCost,
+            repairTime: attr.repairTime
         }
     }
 
