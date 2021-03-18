@@ -48,7 +48,8 @@ var ATTACKEVENT = draw2d.shape.basic.Rectangle.extend({
             resizeable: true,
             editor: new draw2d.ui.LabelInplaceEditor({
                 onCommit: $.proxy(function(value) {
-                    this.userData["Label"] = value;
+                    this.Label = value;
+                    this.userData["Label"] = this.Label
                 }, this),
             })
         });

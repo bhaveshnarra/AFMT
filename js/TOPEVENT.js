@@ -20,9 +20,12 @@ var TOPEVENT = draw2d.shape.basic.Diamond.extend({
                 this.applyConsiderRotation(figure, figure.getParent().getWidth() / 2, figure.getParent().getHeight());
             }
         });
-
+        this.Label = "TOP EVENT"
         this.createPort("input", new MyInputPortLocator());
-
+        this.userData = {
+            Label: this.Label,
+            inspFreq: attr.inspFreq
+        }
         this.classLabel = new draw2d.shape.basic.Label({
             text: "TOP Label",
             stroke: 1,
@@ -33,16 +36,14 @@ var TOPEVENT = draw2d.shape.basic.Diamond.extend({
             resizeable: true,
             editor: new draw2d.ui.LabelInplaceEditor({
                 onCommit: $.proxy(function(value) {
-                    this.userData["Label"] = value;
+                    this.Label = value;
+                    this.userData["Label"] = this.Label
                 }, this),
             })
         });
 
 
-        this.userData = {
-            inspFreq: attr.inspFreq
-        }
-        this.userData["Label"] = "TOP EVENT"
+
         this.add(this.classLabel, new draw2d.layout.locator.RightLocator());
 
     },
@@ -71,6 +72,7 @@ var TOPEVENT = draw2d.shape.basic.Diamond.extend({
 
     setProperties: function(attr) {
         this.userData = {
+            Label: this.Label,
             inspFreq: attr.inspFreq
         }
         console.log(this.userData);
