@@ -27,12 +27,12 @@ var ATTACKEVENT = draw2d.shape.basic.Rectangle.extend({
 
         this.userData = {
             Label: this.Label,
+            detection: attr.detection,
+            enable: attr.enable,
             meanTTA: attr.meanTTA,
             detectionPercent: attr.detectionPercent,
             fixedCOA: attr.fixedCOA,
             fixedDMG: attr.fixedDMG,
-            detection: attr.detection,
-            enable: attr.enable,
             detectTime: attr.detectTime,
             repairCost: attr.repairCost,
             repairTime: attr.repairTime
@@ -83,12 +83,12 @@ var ATTACKEVENT = draw2d.shape.basic.Rectangle.extend({
         console.log(this.Label);
         this.userData = {
             Label: this.Label,
+            detection: attr.detection,
+            enable: attr.enable,
             meanTTA: attr.meanTTA,
             detectionPercent: attr.detectionPercent,
             fixedCOA: attr.fixedCOA,
             fixedDMG: attr.fixedDMG,
-            detection: attr.detection,
-            enable: attr.enable,
             detectTime: attr.detectTime,
             repairCost: attr.repairCost,
             repairTime: attr.repairTime

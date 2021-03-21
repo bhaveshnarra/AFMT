@@ -129,186 +129,6 @@
 
 
             });
-            document.addEventListener("keydown", function(e) {
-
-                if (e.key == "q") {
-                    MOUSESTATUS.mode = "OR";
-                }
-                if (e.key == "w") {
-                    MOUSESTATUS.mode = "AND";
-                }
-                if (e.key == "e") {
-                    MOUSESTATUS.mode = "SAN";
-                }
-                if (e.key == "r") {
-                    MOUSESTATUS.mode = "ATK";
-                }
-                if (e.key == "t") {
-                    MOUSESTATUS.mode = "FAI";
-                }
-                if (e.key == "y") {
-                    MOUSESTATUS.mode = "TOP";
-                }
-
-            });
-
-
-
-            document.addEventListener("click", function(e) {
-
-                if (MOUSESTATUS.mode === "OR") {
-                    canvas.add(f2 = new OR({
-                        x: Math.round(e.clientX / 10) * 10,
-                        y: Math.round(e.clientY / 10) * 10,
-                        A: Math.floor(Math.random() * 10),
-                        B: Math.floor(Math.random() * 10)
-
-                    }));
-
-                    MOUSESTATUS.mode = "SELECT";
-                }
-
-                if (MOUSESTATUS.mode === "AND") {
-                    canvas.add(f2 = new AND({
-                        x: Math.round(e.clientX / 10) * 10,
-                        y: Math.round(e.clientY / 10) * 10,
-                        A: Math.floor(Math.random() * 10),
-                        B: Math.floor(Math.random() * 10)
-
-                    }));
-
-                    MOUSESTATUS.mode = "SELECT";
-                }
-
-                if (MOUSESTATUS.mode === "SAN") {
-                    canvas.add(f2 = new SAND({
-                        x: Math.round(e.clientX / 10) * 10,
-                        y: Math.round(e.clientY / 10) * 10,
-                        A: Math.floor(Math.random() * 10),
-                        B: Math.floor(Math.random() * 10)
-
-                    }));
-
-                    MOUSESTATUS.mode = "SELECT";
-                }
-
-                if (MOUSESTATUS.mode === "ATK") {
-                    canvas.add(f2 = new ATTACKEVENT({
-                        x: Math.round(e.clientX / 10) * 10,
-                        y: Math.round(e.clientY / 10) * 10,
-                        meanTTA: {
-                            value: 0,
-                            type: 'SLIDER',
-                            name: 'Mean Time to Attack',
-                            min: 0,
-                            max: 365,
-                            step: 1
-                        },
-                        detectionPercent: {
-                            value: 0,
-                            type: 'SLIDER',
-                            name: 'Detection Percent',
-                            min: 0,
-                            max: 100,
-                            step: 10
-                        },
-                        fixedCOA: {
-                            value: 0,
-                            type: 'NUMBER',
-                            name: 'Fixed Cost of Attack',
-                            min: 0,
-                            max: 365,
-                            step: 1
-                        },
-                        fixedDMG: {
-                            value: 0,
-                            type: 'NUMBER',
-                            name: 'Fixed Damage',
-                            min: 0,
-                            max: 10000,
-                            step: 1
-                        },
-                        detection: {
-                            value: 0,
-                            type: 'NUMBER',
-                            name: 'Detection',
-                            min: 0,
-                            max: 1,
-                            step: 1
-                        },
-                        detectTime: {
-                            value: 0,
-                            type: 'NUMBER',
-                            name: 'Detection Time',
-                            min: 0,
-                            max: 365,
-                            step: 1
-                        },
-                        repairCost: {
-                            value: 0,
-                            type: 'NUMBER',
-                            name: 'Repair Cost',
-                            min: 0,
-                            max: 100000,
-                            step: 1
-                        }
-
-                    }));
-                    MOUSESTATUS.mode = "SELECT";
-                }
-                if (MOUSESTATUS.mode === "FAI") {
-                    canvas.add(f2 = new FAILUREEVENT({
-                        x: Math.round(e.clientX / 10) * 10,
-                        y: Math.round(e.clientY / 10) * 10,
-                        noOfPhases: {
-                            value: 0,
-                            type: 'SLIDER',
-                            name: 'No of Phases',
-                            min: 0,
-                            max: 12,
-                            step: 1
-                        },
-                        thresholdPhase: {
-                            value: 0,
-                            type: 'SLIDER',
-                            name: 'Threshhold Phase',
-                            min: 0,
-                            max: 12,
-                            step: 1
-                        },
-                        meanTTF: {
-                            value: 0,
-                            type: 'NUMBER',
-                            name: 'Mean time to Failure',
-                            min: 0,
-                            max: 365,
-                            step: 3
-                        },
-                        repairCost: {
-                            value: 0,
-                            type: 'NUMBER',
-                            name: 'Repair Cost',
-                            min: 0,
-                            max: 10000,
-                            step: 1
-                        }
-
-                    }));
-
-                    MOUSESTATUS.mode = "SELECT";
-                }
-
-                if (MOUSESTATUS.mode === "TOP") {
-                    canvas.add(f2 = new TOPEVENT({
-                        x: Math.round(e.clientX / 10) * 10,
-                        y: Math.round(e.clientY / 10) * 10
-
-                    }));
-
-                    MOUSESTATUS.mode = "SELECT";
-                }
-
-            });
         });
 
         function displayJSON(canvas) {
@@ -326,11 +146,11 @@
     <div style="width: 100%;height: 100%;">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Drawing Tool</a>
+                <a class="navbar-brand" href="#">PAST</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
-                <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                <!-- <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -346,7 +166,7 @@
                             </ul>
                         </li>
                     </ul>
-                </div>
+                </div> -->
                 <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
@@ -441,18 +261,18 @@
         <div onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:100vw; height:100vh;">
         </div>
         <div style="width: 300px;   height: 100%;  right: 0; z-index: 1000;   top: 0; 
-        margin-top: 3.5rem;  position: absolute;  background: white;border-left: 4px solid #2c3e50;" id="propertybar">
+        margin-top: 3.5rem; overflow-y:scroll; position: absolute;  background: white;border-left: 4px solid #2c3e50;" id="propertybar">
 
         </div>
 
         <div style="width: 150px;   height: 100%;  left: 0; z-index: 1000;   top: 0; 
-        margin-top: 3.5rem;  position: absolute;  background: white;border-right: 4px solid #2c3e50;">
+        margin-top: 3.5rem;  position: absolute; overflow-y:scroll; background: white;border-right: 4px solid #2c3e50;">
             <div data-shape="ATK" class="palette_node_element draw2d_droppable" title="drag&amp;drop the table into the canvas..">ATTACK EVENT</div>
             <div data-shape="FAI" class="palette_node_element draw2d_droppable" title="drag&amp;drop the table into the canvas..">FAILURE EVENT</div>
             <div data-shape="OR" class="palette_node_element draw2d_droppable" title="drag&amp;drop the table into the canvas..">OR GATE</div>
             <div data-shape="AND" class="palette_node_element draw2d_droppable" title="drag&amp;drop the table into the canvas..">AND GATE</div>
             <div data-shape="SAND" class="palette_node_element draw2d_droppable" title="drag&amp;drop the table into the canvas..">SAND GATE</div>
-            <div data-shape="TOP" class="palette_node_element draw2d_droppable" title="drag&amp;drop the table into the canvas..">TOP EVENT</div>
+            <div data-shape="TOP" class="palette_node_element draw2d_droppable" title="drag&amp;drop the table into the canvas..">TOP EVENT AND INSPECTION FREQUENCY</div>
             <!-- <div data-shape="ATTACKEVENT" class="palette_node_element draw2d_droppable" title="drag&amp;drop the table into the canvas..">ATTACK EVENT</div> -->
         </div>
     </div>

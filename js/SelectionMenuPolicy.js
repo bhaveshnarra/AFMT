@@ -30,6 +30,7 @@ var SelectionMenuPolicy = draw2d.policy.figure.SelectionPolicy.extend({
      */
     onUnselect: function(canvas, figure) {
         this._super(canvas, figure);
+        $("#propertybar").empty();
     },
 
 

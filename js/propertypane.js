@@ -56,20 +56,20 @@ PropertyPane = Class.extend({
                 if (userData[x]) {
                     // html += ''
                     if (userData[x]['type'] == 'NUMBER') {
-                        html += '<h4 style="margin-left:10px;font-size:1rem;" id="title' + x + '" > ' + userData[x]['name'] + '</h4><div class="input-container"><input type="number" id="property' + x + '" value="' + userData[x]['value'] + '" min="' + userData[x]['min'] + '" max="' + userData[x]['max'] + '" step="' + userData[x]['step'] + '"> <span class="control increase"></span> <span class="control decrease"></span> </div>'
+                        html += '<h4 style="margin-left:10px;font-size:1rem;margin-bottom:0" id="title' + x + '" > ' + userData[x]['name'] + '</h4><div class="input-container"><input type="number" id="property' + x + '" value="' + userData[x]['value'] + '" min="' + userData[x]['min'] + '" max="' + userData[x]['max'] + '" step="' + userData[x]['step'] + '"> <span class="control increase"></span> <span class="control decrease"></span> </div>'
                     }
 
                     if (userData[x]['type'] == 'SLIDER') {
-                        html += '<h4 style="margin-left:10px;font-size:1rem;" id="title' + x + '" > ' + userData[x]['name'] + '</h4><div class="range-slider"><input id="property' + x + '" class="range-slider__range" type="range" step=' + userData[x]['step'] + ' value="' + userData[x]['value'] + '" min="' + userData[x]['min'] + '" max="' + userData[x]['max'] + '"><span class="range-slider__value">' + userData[x]['value'] + '</span></div>'
+                        html += '<h4 style="margin-left:10px;font-size:1rem;margin-bottom:0" id="title' + x + '" > ' + userData[x]['name'] + '</h4><div class="range-slider"><input id="property' + x + '" class="range-slider__range" type="range" step=' + userData[x]['step'] + ' value="' + userData[x]['value'] + '" min="' + userData[x]['min'] + '" max="' + userData[x]['max'] + '"><span class="range-slider__value">' + userData[x]['value'] + '</span></div>'
 
                     }
 
                     if (userData[x]['type'] == 'BOOL') {
                         if (userData[x]['value']) {
-                            html += '<h4 style="margin-left:10px;font-size:1rem;" id="title' + x + '" > ' + userData[x]['name'] + '</h4><label class="switch"><input checked id="property' + x + '"  type="checkbox"><span class="slider"></span></label>'
+                            html += '<h4 style="margin-left:10px;font-size:1rem;margin-bottom:0" id="title' + x + '" > ' + userData[x]['name'] + '</h4><label class="switch"><input checked id="property' + x + '"  type="checkbox"><span class="slider"></span></label>'
 
                         } else {
-                            html += '<h4 style="margin-left:10px;font-size:1rem;" id="title' + x + '" > ' + userData[x]['name'] + '</h4><label class="switch"><input id="property' + x + '"  type="checkbox"><span class="slider"></span></label>'
+                            html += '<h4 style="margin-left:10px;font-size:1rem;margin-bottom:0" id="title' + x + '" > ' + userData[x]['name'] + '</h4><label class="switch"><input id="property' + x + '"  type="checkbox"><span class="slider"></span></label>'
 
                         }
 

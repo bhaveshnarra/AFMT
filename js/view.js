@@ -81,7 +81,7 @@ View = draw2d.Canvas.extend({
                 meanTTF: {
                     value: 0,
                     type: 'NUMBER',
-                    name: 'Mean time to Failure',
+                    name: 'Mean time to Failure (in days)',
                     min: 0,
                     max: 365,
                     step: 3
@@ -89,7 +89,7 @@ View = draw2d.Canvas.extend({
                 repairCost: {
                     value: 0,
                     type: 'NUMBER',
-                    name: 'Repair Cost',
+                    name: 'Repair Cost ($)',
                     min: 0,
                     max: 10000,
                     step: 1
@@ -97,7 +97,7 @@ View = draw2d.Canvas.extend({
                 repairTime: {
                     value: 0,
                     type: 'NUMBER',
-                    name: 'Repair Time',
+                    name: 'Repair Time (in days)',
                     min: 0,
                     max: 100000,
                     step: 1
@@ -135,10 +135,20 @@ View = draw2d.Canvas.extend({
             canvas.add(f2 = new ATTACKEVENT({
                 x: Math.round(x / 10) * 10,
                 y: Math.round(y / 10) * 10,
+                enable: {
+                    value: true,
+                    type: 'BOOL',
+                    name: 'enable'
+                },
+                detection: {
+                    value: true,
+                    type: 'BOOL',
+                    name: 'Detection'
+                },
                 meanTTA: {
                     value: 0,
                     type: 'SLIDER',
-                    name: 'Mean Time to Attack',
+                    name: 'Mean Time to Attack (in days)',
                     min: 0,
                     max: 365,
                     step: 1
@@ -154,7 +164,7 @@ View = draw2d.Canvas.extend({
                 fixedCOA: {
                     value: 0,
                     type: 'NUMBER',
-                    name: 'Fixed Cost of Attack',
+                    name: 'Fixed Cost of Attack ($)',
                     min: 0,
                     max: 365,
                     step: 1
@@ -162,25 +172,15 @@ View = draw2d.Canvas.extend({
                 fixedDMG: {
                     value: 0,
                     type: 'NUMBER',
-                    name: 'Fixed Damage',
+                    name: 'Fixed Damage ($)',
                     min: 0,
                     max: 10000,
                     step: 1
                 },
-                enable: {
-                    value: true,
-                    type: 'BOOL',
-                    name: 'enable'
-                },
-                detection: {
-                    value: true,
-                    type: 'BOOL',
-                    name: 'Detection'
-                },
                 detectTime: {
                     value: 0,
                     type: 'NUMBER',
-                    name: 'Detection Time',
+                    name: 'Detection Time (in days)',
                     min: 0,
                     max: 365,
                     step: 1
@@ -188,7 +188,7 @@ View = draw2d.Canvas.extend({
                 repairCost: {
                     value: 0,
                     type: 'NUMBER',
-                    name: 'Repair Cost',
+                    name: 'Repair Cost ($)',
                     min: 0,
                     max: 100000,
                     step: 1
@@ -196,7 +196,7 @@ View = draw2d.Canvas.extend({
                 repairTime: {
                     value: 0,
                     type: 'NUMBER',
-                    name: 'Repair Time',
+                    name: 'Repair Time (in days)',
                     min: 0,
                     max: 100000,
                     step: 1
