@@ -17,7 +17,7 @@ var SelectionMenuPolicy = draw2d.policy.figure.SelectionPolicy.extend({
      */
     onSelect: function(canvas, figure, isPrimarySelection) {
         this._super(canvas, figure, isPrimarySelection);
-        console.log(figure.getProperties());
+        openPropNav()
 
     },
 
@@ -31,6 +31,7 @@ var SelectionMenuPolicy = draw2d.policy.figure.SelectionPolicy.extend({
     onUnselect: function(canvas, figure) {
         this._super(canvas, figure);
         $("#propertybar").empty();
+        closePropNav()
     },
 
 

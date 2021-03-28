@@ -32,6 +32,28 @@
     <script src="./js/view.js"></script>
     <script src="./js/SelectionMenuPolicy.js"></script>
     <script src="./js/propertypane.js"></script>
+    <script src="./js/PARSER.js"></script>
+    <script>
+        function openNav() {
+            document.getElementById("stepBar").style.width = "150px";
+            // document.getElementById("main").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("stepBar").style.width = "0";
+            // document.getElementById("main").style.marginLeft = "0";
+        }
+
+        function openPropNav() {
+            document.getElementById("propbar").style.width = "300px";
+            // document.getElementById("main").style.marginLeft = "250px";
+        }
+
+        function closePropNav() {
+            document.getElementById("propbar").style.width = "0";
+            // document.getElementById("main").style.marginLeft = "0";
+        }
+    </script>
     <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
     <script type="text/javascript">
         var textFigure = null;
@@ -68,18 +90,10 @@
             canvas.installEditPolicy(new draw2d.policy.canvas.SnapToGridEditPolicy())
             properties = new PropertyPane("properties", canvas);
 
+            // parser(object, canvas, draw2d);
 
-            // // JUST ADD SOME DOCU ELEMENTS ON THE SCREEN
-            // var msg = new draw2d.shape.note.PostIt({
-            //     text: "Mouse over to the input ports to see InputPort decorations for default values.\nCan be used for circuits or workflow diagrams.\n \n - Decoration is hidden if a connection is present.\n - Change the default value if you click on the label.\n - Stick/Unstick the decoration with a click on the circle.",
-            //     x: 20,
-            //     y: 20
-            // });
-            // canvas.add(msg);
 
-            // create a default JSON reader
             var reader = new draw2d.io.json.Reader();
-            // reader.unmarshal(canvas, lineJson);
 
 
             displayJSON(canvas);
@@ -88,7 +102,12 @@
             canvas.getCommandStack().addEventListener(function(e) {
                 if (e.isPostChangeEvent()) {
                     displayJSON(canvas);
+
                 }
+            });
+
+            $('#attackTreeDataSubmit').click(function() {
+                parser(JSON.parse($('#attackTreeData').val()), canvas, draw2d);
             });
 
             $("#runButton").click(function() {
@@ -98,6 +117,7 @@
                     tree = JSON.stringify(json, null, 2);
                 });
                 console.log(tree);
+
                 fetch("/", {
                         headers: {
                             'Accept': 'application/json',
@@ -116,7 +136,7 @@
 
                         var data = [trace1];
                         var layout = {
-                            title: 'Result',
+                            title: 'Cummulative Probability Distribution',
                             font: {
                                 size: 18
                             }
@@ -124,7 +144,8 @@
                         Plotly.newPlot('plot', data, layout);
                     })
                     .catch(function(res) {
-                        console.log(res.json())
+                        // console.log(res.json())
+                        $("#plot").html("<div class=\"alert alert-danger\" role=\"alert\">" + res + " </div>");
                     })
 
 
@@ -135,7 +156,14 @@
             var writer = new draw2d.io.json.Writer();
             writer.marshal(canvas, function(json) {
                 $("#json").text(JSON.stringify(json, null, 2));
+                var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(json, null, 2));
+                $('#dwn').attr("href", "data:" + data + "");
+                $('#dwn').attr("download", "data.json");
+                $('#dwn').attr("aria-disabled", "false");
+
+                // $('<a href="data:' + data + '" download="data.json"></a>').appendTo('#dwn');
             });
+
         }
     </script>
 
@@ -167,6 +195,7 @@
                         </li>
                     </ul>
                 </div> -->
+
                 <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
@@ -181,27 +210,33 @@
                         </li>
                     </ul>
                 </div>
-                <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-                    <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            View Results
-                    </a>
-                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink" id="steps">
-                                <li><a class="dropdown-item" href="#" onclick="stepMap('OR');">Result 1</a></li>
-                                <li><a class="dropdown-item" href="#" onclick="stepMap('AND');">Result 2</a></li>
-
-                            </ul>
-                        </li>
-                    </ul>
+                <button class="btn btn-secondary" onclick="openNav()" style="margin-left: 10px;">Add Nodes</button>
+                <button class="btn btn-secondary" onclick="openPropNav()" style="margin-left: 10px;">Edit Properties</button>
+                <button type="button" class="btn btn-secondary" style="margin-left: 10px;" data-bs-toggle="modal" data-bs-target="#uploadAttackTree"> Upload Attack Tree </button>
+                <!-- Modal -->
+                <div class="modal fade" id="uploadAttackTree" tabindex="-1" aria-labelledby="uploadAttackTreeLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="uploadAttackTreeLabel">Upload Attack Tree</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <textarea class="form-control" id="attackTreeData" rows="8"></textarea>
+                                <button type="button" class="btn btn-secondary" id="attackTreeDataSubmit">Upload</button>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-secondary" style="margin-left: 10px;"> Upload Attack Tree </button>
-                <button type="button" class="btn btn-secondary" style="margin-left: 10px;"> Download Attack Tree </button>
+                <a type="button" class="btn btn-secondary" style="margin-left: 10px;" id="dwn" aria-disabled="true"> Download Attack Tree </a>
                 <button type="button" id="runButton" style="margin-left: 10px;" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#runModal"> Run </button>
                 <!-- Modal -->
                 <div class="modal fade" id="runModal" tabindex="-1" aria-labelledby="runModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
-                        <div class="modal-content" style="width: 800px;height: 650px;">
+                        <div class="modal-content" style="min-width: 800px;padding: 10px;">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="runModalLabel">Results</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -260,13 +295,13 @@
         </nav>
         <div onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:100vw; height:100vh;">
         </div>
-        <div style="width: 300px;   height: 100%;  right: 0; z-index: 1000;   top: 0; 
-        margin-top: 3.5rem; overflow-y:scroll; position: absolute;  background: white;border-left: 4px solid #2c3e50;" id="propertybar">
-
+        <div style="width: 0px;   height: 100%;  right: 0; z-index: 1000;   top: 0;  overflow-y:scroll; position: absolute;  background: white;border-left: 4px solid #2c3e50;" id="propbar">
+            <a href="javascript:void(0)" class="closePropbtn" onclick="closePropNav()">X</a>
+            <div id="propertybar"></div>
         </div>
 
-        <div style="width: 150px;   height: 100%;  left: 0; z-index: 1000;   top: 0; 
-        margin-top: 3.5rem;  position: absolute; overflow-y:scroll; background: white;border-right: 4px solid #2c3e50;">
+        <div id="stepBar" style="width: 0px;   height: 100%;  left: 0; z-index: 1000;   top: 0;  position: absolute; overflow-y:scroll; background: white;border-right: 4px solid #2c3e50;">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">X</a>
             <div data-shape="ATK" class="palette_node_element draw2d_droppable" title="drag&amp;drop the table into the canvas..">ATTACK EVENT</div>
             <div data-shape="FAI" class="palette_node_element draw2d_droppable" title="drag&amp;drop the table into the canvas..">FAILURE EVENT</div>
             <div data-shape="OR" class="palette_node_element draw2d_droppable" title="drag&amp;drop the table into the canvas..">OR GATE</div>
