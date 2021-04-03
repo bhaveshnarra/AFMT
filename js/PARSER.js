@@ -972,5 +972,6 @@ var parser = function(object, canvas, draw2d) {
         });
         c.setRouter(new draw2d.layout.connection.CircuitConnectionRouter());
         canvas.add(c);
+        displayJSON(canvas);
     });
 }

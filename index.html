@@ -101,10 +101,10 @@
 
 
             canvas.getCommandStack().addEventListener(function(e) {
-                if (e.isPostChangeEvent()) {
-                    displayJSON(canvas);
+                // if (e.isPostChangeEvent()) {
+                displayJSON(canvas);
 
-                }
+                // }
             });
 
             $('#attackTreeDataSubmit').click(function() {
@@ -216,24 +216,21 @@
                             })
                             .on("mouseout", function() {})
 
-                        // // Add the x Axis
-                        // svg.append("g")
-                        //     .attr("transform", "translate(0," + height + ")")
-                        //     .call(d3.axisBottom(x));
 
-                        // text label for the x axis
                         svg.append("text")
                             .attr("transform",
                                 "translate(" + (width / 2) + " ," +
-                                (height + margin.top + 20) + ")")
+                                (height + margin.top) + ")")
                             .style("text-anchor", "middle")
                             .text("Days");
 
-                        // // Add the y Axis
-                        // svg.append("g")
-                        //     .call(d3.axisLeft(y));
+                        svg.append("text")
+                            .attr("transform",
+                                "translate(" + (width / 2) + " ," +
+                                (margin.top) + ")")
+                            .style("text-anchor", "middle")
+                            .text("Cummulative Probability Distribution");
 
-                        // text label for the y axis
                         svg.append("text")
                             .attr("transform", "rotate(-90)")
                             .attr("y", 0 - margin.left)

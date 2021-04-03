@@ -244,7 +244,7 @@ PropertyPane = Class.extend({
                     // console.log($("#propertymeanTTF").val(), $("#propertymeanTTF").attr("value"), $("#propertynoOfPhases").attr("min"), $("#propertynoOfPhases").attr("step"));
                 figure.setProperties(attr);
             }
-
+            displayJSON(canvas);
         });
 
 
