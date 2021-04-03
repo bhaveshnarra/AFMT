@@ -27,7 +27,7 @@ var TOPEVENT = draw2d.shape.basic.Diamond.extend({
             inspFreq: attr.inspFreq
         }
         this.classLabel = new draw2d.shape.basic.Label({
-            text: "TOP Label",
+            text: this.Label,
             stroke: 1,
             fontColor: "#5856d6",
             bgColor: "#f7f7f7",
@@ -72,7 +72,7 @@ var TOPEVENT = draw2d.shape.basic.Diamond.extend({
 
     setProperties: function(attr) {
         this.userData = {
-            Label: attr.Label,
+            Label: this.Label,
             inspFreq: attr.inspFreq
         }
         console.log(this.userData);

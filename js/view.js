@@ -64,50 +64,50 @@ View = draw2d.Canvas.extend({
                 y: Math.round(y / 10) * 10,
                 Label: "Failure Event",
                 noOfPhases: {
-                    value: 0,
+                    value: 1,
                     type: 'SLIDER',
                     name: 'No of Phases',
-                    min: 0,
+                    min: 1,
                     max: 12,
                     step: 1
                 },
                 thresholdPhase: {
-                    value: 0,
+                    value: 1,
                     type: 'SLIDER',
                     name: 'Threshhold Phase',
-                    min: 0,
+                    min: 1,
                     max: 12,
                     step: 1
                 },
                 meanTTF: {
-                    value: 0,
+                    value: 1,
                     type: 'NUMBER',
                     name: 'Mean time to Failure (in days)',
-                    min: 0,
+                    min: 1,
                     max: 365,
-                    step: 3
+                    step: 1
                 },
                 repairCost: {
-                    value: 0,
+                    value: 1,
                     type: 'NUMBER',
                     name: 'Repair Cost ($)',
-                    min: 0,
+                    min: 1,
                     max: 10000,
                     step: 1
                 },
                 repairTime: {
-                    value: 0,
+                    value: 1,
                     type: 'NUMBER',
                     name: 'Repair Time (in days)',
-                    min: 0,
+                    min: 1,
                     max: 100000,
                     step: 1
                 },
                 failureProbability: {
-                    value: 0,
+                    value: 1,
                     type: 'NUMBER',
                     name: 'Failure Probability',
-                    min: 0,
+                    min: 1,
                     max: 100,
                     step: 1
                 }
@@ -122,10 +122,10 @@ View = draw2d.Canvas.extend({
                 y: Math.round(y / 10) * 10,
                 Label: "Top Event",
                 inspFreq: {
-                    value: 0,
+                    value: 1,
                     type: 'NUMBER',
                     name: 'Inspection Frequency',
-                    min: 0,
+                    min: 1,
                     max: 10000,
                     step: 1
                 }
@@ -149,58 +149,58 @@ View = draw2d.Canvas.extend({
                     name: 'Detection'
                 },
                 meanTTA: {
-                    value: 0,
+                    value: 1,
                     type: 'SLIDER',
                     name: 'Mean Time to Attack (in days)',
-                    min: 0,
+                    min: 1,
                     max: 365,
                     step: 1
                 },
                 detectionPercent: {
-                    value: 0,
+                    value: 1,
                     type: 'SLIDER',
                     name: 'Detection Percent',
-                    min: 0,
+                    min: 1,
                     max: 100,
                     step: 10
                 },
                 fixedCOA: {
-                    value: 0,
+                    value: 1,
                     type: 'NUMBER',
                     name: 'Fixed Cost of Attack ($)',
-                    min: 0,
+                    min: 1,
                     max: 365,
                     step: 1
                 },
                 fixedDMG: {
-                    value: 0,
+                    value: 1,
                     type: 'NUMBER',
                     name: 'Fixed Damage ($)',
-                    min: 0,
+                    min: 1,
                     max: 10000,
                     step: 1
                 },
                 detectTime: {
-                    value: 0,
+                    value: 1,
                     type: 'NUMBER',
                     name: 'Detection Time (in days)',
-                    min: 0,
+                    min: 1,
                     max: 365,
                     step: 1
                 },
                 repairCost: {
-                    value: 0,
+                    value: 1,
                     type: 'NUMBER',
                     name: 'Repair Cost ($)',
-                    min: 0,
+                    min: 1,
                     max: 100000,
                     step: 1
                 },
                 repairTime: {
-                    value: 0,
+                    value: 1,
                     type: 'NUMBER',
                     name: 'Repair Time (in days)',
-                    min: 0,
+                    min: 1,
                     max: 100000,
                     step: 1
                 }

@@ -39,7 +39,7 @@ var ATTACKEVENT = draw2d.shape.basic.Rectangle.extend({
         }
         this.createPort("output", new MyOutputPortLocator());
         this.classLabel = new draw2d.shape.basic.Label({
-            text: "ATTACK Label",
+            text: this.Label,
             stroke: 1,
             fontColor: "#5856d6",
             bgColor: "#f7f7f7",
@@ -82,7 +82,7 @@ var ATTACKEVENT = draw2d.shape.basic.Rectangle.extend({
     setProperties: function(attr) {
         console.log(this.Label);
         this.userData = {
-            Label: attr.Label,
+            Label: this.Label,
             detection: attr.detection,
             enable: attr.enable,
             meanTTA: attr.meanTTA,

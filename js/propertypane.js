@@ -111,9 +111,9 @@ PropertyPane = Class.extend({
                             value: $("#propertythresholdPhase").val(),
                             type: 'SLIDER',
                             name: $("#titlethresholdPhase").text(),
-                            min: $("#propertymeanTTF").attr("min"),
-                            max: $("#propertymeanTTF").attr("max"),
-                            step: $("#propertymeanTTF").attr("step")
+                            min: $("#propertythresholdPhase").attr("min"),
+                            max: $("#propertythresholdPhase").attr("max"),
+                            step: $("#propertythresholdPhase").attr("step")
                         },
                         meanTTF: {
                             value: $("#propertymeanTTF").val(),

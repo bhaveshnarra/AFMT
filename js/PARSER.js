@@ -772,57 +772,57 @@ var parser = function(object, canvas, draw2d) {
                         value: element.userData.meanTTA.value,
                         type: 'SLIDER',
                         name: 'Mean Time to Attack (in days)',
-                        min: 0,
-                        max: 365,
-                        step: 1
+                        min: element.userData.meanTTA.min,
+                        max: element.userData.meanTTA.max,
+                        step: element.userData.meanTTA.step
                     },
                     detectionPercent: {
                         value: element.userData.detectionPercent.value,
                         type: 'SLIDER',
                         name: 'Detection Percent',
-                        min: 0,
-                        max: 100,
-                        step: 10
+                        min: element.userData.detectionPercent.min,
+                        max: element.userData.detectionPercent.max,
+                        step: element.userData.detectionPercent.step
                     },
                     fixedCOA: {
                         value: element.userData.fixedCOA.value,
                         type: 'NUMBER',
                         name: 'Fixed Cost of Attack ($)',
-                        min: 0,
-                        max: 365,
-                        step: 1
+                        min: element.userData.fixedCOA.min,
+                        max: element.userData.fixedCOA.max,
+                        step: element.userData.fixedCOA.step
                     },
                     fixedDMG: {
                         value: element.userData.fixedDMG.value,
                         type: 'NUMBER',
                         name: 'Fixed Damage ($)',
-                        min: 0,
-                        max: 10000,
-                        step: 1
+                        min: element.userData.fixedDMG.min,
+                        max: element.userData.fixedDMG.max,
+                        step: element.userData.fixedDMG.step
                     },
                     detectTime: {
                         value: element.userData.detectTime.value,
                         type: 'NUMBER',
                         name: 'Detection Time (in days)',
-                        min: 0,
-                        max: 365,
-                        step: 1
+                        min: element.userData.detectTime.min,
+                        max: element.userData.detectTime.max,
+                        step: element.userData.detectTime.step
                     },
                     repairCost: {
                         value: element.userData.repairCost.value,
                         type: 'NUMBER',
                         name: 'Repair Cost ($)',
-                        min: 0,
-                        max: 100000,
-                        step: 1
+                        min: element.userData.repairCost.min,
+                        max: element.userData.repairCost.max,
+                        step: element.userData.repairCost.step
                     },
                     repairTime: {
                         value: element.userData.repairTime.value,
                         type: 'NUMBER',
                         name: 'Repair Time (in days)',
-                        min: 0,
-                        max: 100000,
-                        step: 1
+                        min: element.userData.repairTime.min,
+                        max: element.userData.repairTime.max,
+                        step: element.userData.repairTime.step
                     }
 
                 }));
@@ -839,49 +839,49 @@ var parser = function(object, canvas, draw2d) {
                         value: element.userData.noOfPhases.value,
                         type: 'SLIDER',
                         name: 'No of Phases',
-                        min: 0,
-                        max: 12,
-                        step: 1
+                        min: element.userData.noOfPhases.min,
+                        max: element.userData.noOfPhases.max,
+                        step: element.userData.noOfPhases.step
                     },
                     thresholdPhase: {
                         value: element.userData.thresholdPhase.value,
                         type: 'SLIDER',
                         name: 'Threshhold Phase',
-                        min: 0,
-                        max: 12,
-                        step: 1
+                        min: element.userData.thresholdPhase.min,
+                        max: element.userData.thresholdPhase.max,
+                        step: element.userData.thresholdPhase.step
                     },
                     meanTTF: {
                         value: element.userData.meanTTF.value,
                         type: 'NUMBER',
                         name: 'Mean time to Failure (in days)',
-                        min: 0,
-                        max: 365,
-                        step: 3
+                        min: element.userData.meanTTF.min,
+                        max: element.userData.meanTTF.max,
+                        step: element.userData.meanTTF.step
                     },
                     repairCost: {
                         value: element.userData.repairCost.value,
                         type: 'NUMBER',
                         name: 'Repair Cost ($)',
-                        min: 0,
-                        max: 10000,
-                        step: 1
+                        min: element.userData.repairCost.min,
+                        max: element.userData.repairCost.max,
+                        step: element.userData.repairCost.step
                     },
                     repairTime: {
                         value: element.userData.repairTime.value,
                         type: 'NUMBER',
                         name: 'Repair Time (in days)',
-                        min: 0,
-                        max: 100000,
-                        step: 1
+                        min: element.userData.repairTime.min,
+                        max: element.userData.repairTime.max,
+                        step: element.userData.repairTime.step
                     },
                     failureProbability: {
                         value: element.userData.failureProbability.value,
                         type: 'NUMBER',
                         name: 'Failure Probability',
-                        min: 0,
-                        max: 100,
-                        step: 1
+                        min: element.userData.failureProbability.min,
+                        max: element.userData.failureProbability.max,
+                        step: element.userData.failureProbability.step
                     }
 
                 }));
@@ -900,9 +900,9 @@ var parser = function(object, canvas, draw2d) {
                         value: element.userData.inspFreq.value,
                         type: 'NUMBER',
                         name: 'Inspection Frequency',
-                        min: 0,
-                        max: 10000,
-                        step: 1
+                        min: element.userData.inspFreq.min,
+                        max: element.userData.inspFreq.max,
+                        step: element.userData.inspFreq.step
                     }
 
                 }));

@@ -36,7 +36,7 @@ var FAILUREEVENT = draw2d.shape.basic.Oval.extend({
         this.createPort("output", new MyOutputPortLocator());
 
         this.classLabel = new draw2d.shape.basic.Label({
-            text: "FAILURE Label",
+            text: this.Label,
             stroke: 1,
             fontColor: "#5856d6",
             bgColor: "#f7f7f7",
@@ -78,7 +78,7 @@ var FAILUREEVENT = draw2d.shape.basic.Oval.extend({
 
     setProperties: function(attr) {
         this.userData = {
-                Label: attr.Label,
+                Label: this.Label,
                 noOfPhases: attr.noOfPhases,
                 thresholdPhase: attr.thresholdPhase,
                 meanTTF: attr.meanTTF,
