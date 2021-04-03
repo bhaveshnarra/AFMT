@@ -147,6 +147,7 @@ PropertyPane = Class.extend({
                         failureProbability: {
                             value: $("#propertyfailureProbability").val(),
                             type: 'NUMBER',
+                            hide: true,
                             name: $("#titlefailureProbability").text(),
                             min: $("#propertyfailureProbability").attr('min'),
                             max: $("#propertyfailureProbability").attr('max'),
@@ -213,11 +214,13 @@ PropertyPane = Class.extend({
                             value: $("#propertydetection").val(),
                             value: $("#propertydetection").is(':checked'),
                             type: 'BOOL',
+                            hide: true,
                             name: $("#titledetection").text()
                         },
                         enable: {
                             value: $("#propertyenable").is(':checked'),
                             type: 'BOOL',
+                            hide: true,
                             name: $("#titleenable").text()
                         },
                         detectTime: {
