@@ -23,7 +23,7 @@ var FAILUREEVENT = draw2d.shape.basic.Oval.extend({
                 this.applyConsiderRotation(figure, p.getWidth() / 2, 0);
             }
         });
-        this.Label = "FAILURE EVENT"
+        this.Label = attr.Label
         this.userData = {
             Label: this.Label,
             noOfPhases: attr.noOfPhases,
@@ -78,7 +78,7 @@ var FAILUREEVENT = draw2d.shape.basic.Oval.extend({
 
     setProperties: function(attr) {
         this.userData = {
-                Label: this.Label,
+                Label: attr.Label,
                 noOfPhases: attr.noOfPhases,
                 thresholdPhase: attr.thresholdPhase,
                 meanTTF: attr.meanTTF,

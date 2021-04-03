@@ -23,7 +23,7 @@ var ATTACKEVENT = draw2d.shape.basic.Rectangle.extend({
                 this.applyConsiderRotation(figure, p.getWidth() / 2, 0);
             }
         });
-        this.Label = "ATTACK EVENT"
+        this.Label = attr.Label
 
         this.userData = {
             Label: this.Label,
@@ -82,7 +82,7 @@ var ATTACKEVENT = draw2d.shape.basic.Rectangle.extend({
     setProperties: function(attr) {
         console.log(this.Label);
         this.userData = {
-            Label: this.Label,
+            Label: attr.Label,
             detection: attr.detection,
             enable: attr.enable,
             meanTTA: attr.meanTTA,

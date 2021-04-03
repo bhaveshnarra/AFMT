@@ -62,6 +62,7 @@ View = draw2d.Canvas.extend({
             canvas.add(f2 = new FAILUREEVENT({
                 x: Math.round(x / 10) * 10,
                 y: Math.round(y / 10) * 10,
+                Label: "Failure Event",
                 noOfPhases: {
                     value: 0,
                     type: 'SLIDER',
@@ -119,6 +120,7 @@ View = draw2d.Canvas.extend({
             canvas.add(f2 = new TOPEVENT({
                 x: Math.round(x / 10) * 10,
                 y: Math.round(y / 10) * 10,
+                Label: "Top Event",
                 inspFreq: {
                     value: 0,
                     type: 'NUMBER',
@@ -135,6 +137,7 @@ View = draw2d.Canvas.extend({
             canvas.add(f2 = new ATTACKEVENT({
                 x: Math.round(x / 10) * 10,
                 y: Math.round(y / 10) * 10,
+                Label: "Attack Event",
                 enable: {
                     value: true,
                     type: 'BOOL',

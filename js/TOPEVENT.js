@@ -20,7 +20,7 @@ var TOPEVENT = draw2d.shape.basic.Diamond.extend({
                 this.applyConsiderRotation(figure, figure.getParent().getWidth() / 2, figure.getParent().getHeight());
             }
         });
-        this.Label = "TOP EVENT"
+        this.Label = attr.Label
         this.createPort("input", new MyInputPortLocator());
         this.userData = {
             Label: this.Label,
@@ -72,7 +72,7 @@ var TOPEVENT = draw2d.shape.basic.Diamond.extend({
 
     setProperties: function(attr) {
         this.userData = {
-            Label: this.Label,
+            Label: attr.Label,
             inspFreq: attr.inspFreq
         }
         console.log(this.userData);

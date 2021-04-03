@@ -757,6 +757,7 @@ var parser = function(object, canvas, draw2d) {
                 canvas.add(f2 = new ATTACKEVENT({
                     x: element.x,
                     y: element.y,
+                    Label: element.userData.Label,
                     enable: {
                         value: element.userData.enable.value,
                         type: 'BOOL',
@@ -833,6 +834,7 @@ var parser = function(object, canvas, draw2d) {
                 canvas.add(f2 = new FAILUREEVENT({
                     x: element.x,
                     y: element.y,
+                    Label: element.userData.Label,
                     noOfPhases: {
                         value: element.userData.noOfPhases.value,
                         type: 'SLIDER',
@@ -893,6 +895,7 @@ var parser = function(object, canvas, draw2d) {
                 canvas.add(f2 = new TOPEVENT({
                     x: element.x,
                     y: element.y,
+                    Label: element.userData.Label,
                     inspFreq: {
                         value: element.userData.inspFreq.value,
                         type: 'NUMBER',
