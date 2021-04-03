@@ -118,7 +118,7 @@
                     tree = JSON.stringify(json, null, 2);
                 });
                 console.log(tree);
-
+                $("#plot").empty();
                 fetch("/", {
                         headers: {
                             'Accept': 'application/json',
@@ -173,7 +173,7 @@
                                 "y": y[d]
                             }
                         })
-
+                        $("#runModalLabel").html("Results(Probability of realizing the top node in a mission time of 1 year) " + data[2]['probValList']);
                         // 1. Add the SVG to the page and employ #2
                         var svg = d3.select("#plot").append("svg")
                             .attr("width", width + margin.left + margin.right)
@@ -209,27 +209,12 @@
                             .attr("cy", function(d) {
                                 return yScale(d.y)
                             })
-                            .attr("r", 5)
+                            .attr("r", 2)
                             .on("mouseover", function(a, b, c) {
                                 console.log(a)
                                 this.attr('class', 'focus')
                             })
                             .on("mouseout", function() {})
-
-                        // var trace1 = {
-                        //     x: data[0]['probCdfX'],
-                        //     y: data[1]['probCdfY'],
-                        //     type: 'scatter'
-                        // };
-
-                        // var data = [trace1];
-                        // var layout = {
-                        //     title: 'Cummulative Probability Distribution',
-                        //     font: {
-                        //         size: 18
-                        //     }
-                        // };
-                        // Plotly.newPlot('plot', data, layout);
                     })
                     .catch(function(res) {
 
@@ -328,7 +313,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content" style="min-width: 800px;padding: 10px;">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="runModalLabel">Results</h5>
+                                <h5 class="modal-title" id="runModalLabel">Results(Probability of realizing the top node in a mission time of 1 year)</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body" id="plot" style="width: 500px;height: 600px;">
