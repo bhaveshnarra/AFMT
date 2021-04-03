@@ -173,7 +173,7 @@
                                 "y": y[d]
                             }
                         })
-                        $("#runModalLabel").html("Results(Probability of realizing the top node in a mission time of 1 year) " + data[2]['probValList']);
+                        $("#runModalLabel").html("Probability of realizing the top node in a mission time of 1 year " + data[2]['probValList']);
                         // 1. Add the SVG to the page and employ #2
                         var svg = d3.select("#plot").append("svg")
                             .attr("width", width + margin.left + margin.right)
@@ -209,12 +209,38 @@
                             .attr("cy", function(d) {
                                 return yScale(d.y)
                             })
-                            .attr("r", 2)
+                            .attr("r", 3)
                             .on("mouseover", function(a, b, c) {
                                 console.log(a)
                                 this.attr('class', 'focus')
                             })
                             .on("mouseout", function() {})
+
+                        // Add the x Axis
+                        svg.append("g")
+                            .attr("transform", "translate(0," + height + ")")
+                            .call(d3.axisBottom(x));
+
+                        // text label for the x axis
+                        svg.append("text")
+                            .attr("transform",
+                                "translate(" + (width / 2) + " ," +
+                                (height + margin.top + 20) + ")")
+                            .style("text-anchor", "middle")
+                            .text("Days");
+
+                        // Add the y Axis
+                        svg.append("g")
+                            .call(d3.axisLeft(y));
+
+                        // text label for the y axis
+                        svg.append("text")
+                            .attr("transform", "rotate(-90)")
+                            .attr("y", 0 - margin.left)
+                            .attr("x", 0 - (height / 2))
+                            .attr("dy", "1em")
+                            .style("text-anchor", "middle")
+                            .text("Probability");
                     })
                     .catch(function(res) {
 
@@ -316,7 +342,7 @@
                                 <h5 class="modal-title" id="runModalLabel">Results(Probability of realizing the top node in a mission time of 1 year)</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="modal-body" id="plot" style="width: 500px;height: 600px;">
+                            <div class="modal-body" id="plot" style="height: 600px;">
 
                             </div>
                             <div class="modal-footer">
