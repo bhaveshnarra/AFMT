@@ -761,12 +761,14 @@ var parser = function(object, canvas, draw2d) {
                     enable: {
                         value: element.userData.enable.value,
                         type: 'BOOL',
-                        name: 'enable'
+                        name: 'enable',
+                        hide: true,
                     },
                     detection: {
                         value: element.userData.detection.value,
                         type: 'BOOL',
-                        name: 'Detection'
+                        name: 'Detection',
+                        hide: true,
                     },
                     meanTTA: {
                         value: element.userData.meanTTA.value,
@@ -881,7 +883,8 @@ var parser = function(object, canvas, draw2d) {
                         name: 'Failure Probability',
                         min: element.userData.failureProbability.min,
                         max: element.userData.failureProbability.max,
-                        step: element.userData.failureProbability.step
+                        step: element.userData.failureProbability.step,
+                        hide: true,
                     }
 
                 }));

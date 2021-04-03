@@ -104,12 +104,13 @@ View = draw2d.Canvas.extend({
                     step: 1
                 },
                 failureProbability: {
-                    value: 1,
+                    value: 100,
                     type: 'NUMBER',
                     name: 'Failure Probability',
                     min: 1,
                     max: 100,
-                    step: 1
+                    step: 1,
+                    hide: true,
                 }
 
             }));
@@ -141,12 +142,14 @@ View = draw2d.Canvas.extend({
                 enable: {
                     value: true,
                     type: 'BOOL',
-                    name: 'enable'
+                    name: 'enable',
+                    hide: true,
                 },
                 detection: {
                     value: true,
                     type: 'BOOL',
-                    name: 'Detection'
+                    name: 'Detection',
+                    hide: true,
                 },
                 meanTTA: {
                     value: 1,
