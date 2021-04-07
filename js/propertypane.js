@@ -145,7 +145,7 @@ PropertyPane = Class.extend({
                             step: $("#propertyrepairTime").attr('step')
                         },
                         failureProbability: {
-                            value: $("#propertyfailureProbability").val(),
+                            value: 100,
                             type: 'NUMBER',
                             hide: true,
                             name: $("#titlefailureProbability").text(),
@@ -211,14 +211,13 @@ PropertyPane = Class.extend({
                             step: $("#propertyfixedDMG").attr('step')
                         },
                         detection: {
-                            value: $("#propertydetection").val(),
-                            value: $("#propertydetection").is(':checked'),
+                            value: true,
                             type: 'BOOL',
                             hide: true,
                             name: $("#titledetection").text()
                         },
                         enable: {
-                            value: $("#propertyenable").is(':checked'),
+                            value: true,
                             type: 'BOOL',
                             hide: true,
                             name: $("#titleenable").text()
