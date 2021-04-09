@@ -1,8 +1,8 @@
-var object = [{
-        "type": "ATTACK EVENT",
-        "id": "59a700bb-c6b3-6f62-3351-eaacbe44194d",
-        "x": 520,
-        "y": 540,
+var pollutionTree = [{
+        "type": "TOP EVENT",
+        "id": "bda07307-d321-7209-4799-a280b9714b61",
+        "x": 600,
+        "y": 60,
         "width": 100,
         "height": 50,
         "alpha": 1,
@@ -10,70 +10,228 @@ var object = [{
         "draggable": true,
         "angle": 0,
         "userData": {
-            "Label": "ATTACK EVENT",
-            "meanTTA": {
-                "value": "200",
-                "type": "SLIDER",
-                "name": " Mean Time to Attack",
-                "min": "0",
-                "max": "365",
-                "step": "1"
-            },
-            "detectionPercent": {
-                "value": "20",
-                "type": "SLIDER",
-                "name": " Detection Percent",
-                "min": "0",
-                "max": "100",
-                "step": "10"
-            },
-            "fixedCOA": {
-                "value": "150",
+            "Label": "Pollution",
+            "inspFreq": {
+                "value": 1,
                 "type": "NUMBER",
-                "name": " Fixed Cost of Attack",
-                "min": "0",
-                "max": "365",
-                "step": "1"
+                "name": "Inspection Frequency",
+                "min": 1,
+                "max": 10000,
+                "step": 1
+            }
+        },
+        "cssClass": "TOP EVENT",
+        "ports": [{
+            "type": "draw2d.InputPort",
+            "id": "d34c3ff6-ad10-48f0-aaf6-6fc657b7e81f",
+            "width": 10,
+            "height": 10,
+            "alpha": 1,
+            "selectable": false,
+            "draggable": true,
+            "angle": 0,
+            "userData": {},
+            "cssClass": "draw2d_InputPort",
+            "bgColor": "rgba(79,104,112,1)",
+            "color": "rgba(27,27,27,1)",
+            "stroke": 1,
+            "dasharray": null,
+            "maxFanOut": 9007199254740991,
+            "name": "input0",
+            "semanticGroup": "global",
+            "port": "draw2d.InputPort",
+            "locator": "draw2d.layout.locator.PortLocator",
+            "locatorAttr": {}
+        }],
+        "bgColor": "rgba(0,163,246,1)",
+        "color": "rgba(27,27,27,1)",
+        "stroke": 1,
+        "radius": 0,
+        "dasharray": null,
+        "vertices": [{
+                "x": 650,
+                "y": 60
             },
-            "fixedDMG": {
-                "value": "10",
-                "type": "NUMBER",
-                "name": " Fixed Damage",
-                "min": "0",
-                "max": "10000",
-                "step": "1"
+            {
+                "x": 700,
+                "y": 85
             },
+            {
+                "x": 650,
+                "y": 110
+            },
+            {
+                "x": 600,
+                "y": 85
+            }
+        ]
+    },
+    {
+        "type": "OR Gate",
+        "id": "1b99d7cb-7bc2-2791-549e-e88b35958f7c",
+        "x": 620,
+        "y": 160,
+        "width": 70,
+        "height": 70,
+        "alpha": 1,
+        "selectable": true,
+        "draggable": true,
+        "angle": 0,
+        "userData": {
+            "Label": "OR Gate"
+        },
+        "cssClass": "OR Gate",
+        "ports": [{
+                "type": "draw2d.InputPort",
+                "id": "ffbff9f1-c79c-e7e0-b9fd-f6bbab3e02f5",
+                "width": 10,
+                "height": 10,
+                "alpha": 1,
+                "selectable": false,
+                "draggable": true,
+                "angle": 0,
+                "userData": {},
+                "cssClass": "draw2d_InputPort",
+                "bgColor": "rgba(79,104,112,1)",
+                "color": "rgba(27,27,27,1)",
+                "stroke": 1,
+                "dasharray": null,
+                "maxFanOut": 9007199254740991,
+                "name": "input0",
+                "semanticGroup": "global",
+                "port": "draw2d.InputPort",
+                "locator": "draw2d.layout.locator.PortLocator",
+                "locatorAttr": {}
+            },
+            {
+                "type": "draw2d.InputPort",
+                "id": "b936fbe2-c8f2-4295-b2a9-3024a03c8c0f",
+                "width": 10,
+                "height": 10,
+                "alpha": 1,
+                "selectable": false,
+                "draggable": true,
+                "angle": 0,
+                "userData": {},
+                "cssClass": "draw2d_InputPort",
+                "bgColor": "rgba(79,104,112,1)",
+                "color": "rgba(27,27,27,1)",
+                "stroke": 1,
+                "dasharray": null,
+                "maxFanOut": 9007199254740991,
+                "name": "input1",
+                "semanticGroup": "global",
+                "port": "draw2d.InputPort",
+                "locator": "draw2d.layout.locator.PortLocator",
+                "locatorAttr": {}
+            },
+            {
+                "type": "draw2d.OutputPort",
+                "id": "6c764850-cd4c-de96-630d-22eedad6ab4b",
+                "width": 10,
+                "height": 10,
+                "alpha": 1,
+                "selectable": false,
+                "draggable": true,
+                "angle": 0,
+                "userData": {},
+                "cssClass": "draw2d_OutputPort",
+                "bgColor": "rgba(79,104,112,1)",
+                "color": "rgba(27,27,27,1)",
+                "stroke": 1,
+                "dasharray": null,
+                "maxFanOut": 9007199254740991,
+                "name": "output0",
+                "semanticGroup": "global",
+                "port": "draw2d.OutputPort",
+                "locator": "draw2d.layout.locator.PortLocator",
+                "locatorAttr": {}
+            }
+        ],
+        "bgColor": "rgba(0,0,0,0)",
+        "color": "rgba(27,27,27,1)",
+        "stroke": 0,
+        "radius": 0,
+        "dasharray": null
+    },
+    {
+        "type": "ATTACK EVENT",
+        "id": "dfbc58d1-75d3-333f-3d77-52bf930337e8",
+        "x": 240,
+        "y": 480,
+        "width": 100,
+        "height": 50,
+        "alpha": 1,
+        "selectable": true,
+        "draggable": true,
+        "angle": 0,
+        "userData": {
+            "Label": "Deactivate Scada",
             "detection": {
                 "value": true,
                 "type": "BOOL",
-                "name": " Detection"
+                "hide": true,
+                "name": ""
             },
             "enable": {
                 "value": true,
                 "type": "BOOL",
-                "name": " enable"
+                "hide": true,
+                "name": ""
+            },
+            "meanTTA": {
+                "value": "45",
+                "type": "SLIDER",
+                "name": " Mean Time to Attack (in days)",
+                "min": "1",
+                "max": "365",
+                "step": "1"
+            },
+            "detectionPercent": {
+                "value": "11",
+                "type": "SLIDER",
+                "name": " Detection Percent",
+                "min": "1",
+                "max": "100",
+                "step": "10"
+            },
+            "fixedCOA": {
+                "value": "500",
+                "type": "NUMBER",
+                "name": " Fixed Cost of Attack ($)",
+                "min": "1",
+                "max": "365",
+                "step": "1"
+            },
+            "fixedDMG": {
+                "value": "1000",
+                "type": "NUMBER",
+                "name": " Fixed Damage ($)",
+                "min": "1",
+                "max": "10000",
+                "step": "1"
             },
             "detectTime": {
-                "value": "200",
+                "value": "5",
                 "type": "NUMBER",
-                "name": " Detection Time",
-                "min": "0",
+                "name": " Detection Time (in days)",
+                "min": "1",
                 "max": "365",
                 "step": "1"
             },
             "repairCost": {
-                "value": "100",
+                "value": "1000",
                 "type": "NUMBER",
-                "name": " Repair Cost",
-                "min": "0",
+                "name": " Repair Cost ($)",
+                "min": "1",
                 "max": "100000",
                 "step": "1"
             },
             "repairTime": {
-                "value": "1000",
+                "value": "5",
                 "type": "NUMBER",
-                "name": " Repair Time",
-                "min": "0",
+                "name": " Repair Time (in days)",
+                "min": "1",
                 "max": "100000",
                 "step": "1"
             }
@@ -81,7 +239,7 @@ var object = [{
         "cssClass": "ATTACK EVENT",
         "ports": [{
             "type": "draw2d.OutputPort",
-            "id": "a1f6fc4d-acbd-d9f4-54db-5cad34f73e53",
+            "id": "8f8fbf75-1f7e-706e-6d0a-2bf52fd1fab0",
             "width": 10,
             "height": 10,
             "alpha": 1,
@@ -109,9 +267,9 @@ var object = [{
     },
     {
         "type": "ATTACK EVENT",
-        "id": "3e57c736-8760-c341-9b7e-a7efd755d9fe",
-        "x": 800,
-        "y": 440,
+        "id": "9c761841-0afe-c223-2b8b-086323b41ba1",
+        "x": 480,
+        "y": 480,
         "width": 100,
         "height": 50,
         "alpha": 1,
@@ -119,70 +277,72 @@ var object = [{
         "draggable": true,
         "angle": 0,
         "userData": {
-            "Label": "ATTACK EVENT",
-            "meanTTA": {
-                "value": "150",
-                "type": "SLIDER",
-                "name": " Mean Time to Attack",
-                "min": "0",
-                "max": "365",
-                "step": "1"
-            },
-            "detectionPercent": {
-                "value": "10",
-                "type": "SLIDER",
-                "name": " Detection Percent",
-                "min": "0",
-                "max": "100",
-                "step": "10"
-            },
-            "fixedCOA": {
-                "value": "500",
-                "type": "NUMBER",
-                "name": " Fixed Cost of Attack",
-                "min": "0",
-                "max": "365",
-                "step": "1"
-            },
-            "fixedDMG": {
-                "value": "50",
-                "type": "NUMBER",
-                "name": " Fixed Damage",
-                "min": "0",
-                "max": "10000",
-                "step": "1"
-            },
+            "Label": "Watterhammer attack",
             "detection": {
                 "value": true,
                 "type": "BOOL",
-                "name": " Detection"
+                "hide": true,
+                "name": ""
             },
             "enable": {
                 "value": true,
                 "type": "BOOL",
-                "name": " enable"
+                "hide": true,
+                "name": ""
+            },
+            "meanTTA": {
+                "value": "35",
+                "type": "SLIDER",
+                "name": "  Mean Time to Attack (in days)",
+                "min": "1",
+                "max": "365",
+                "step": "1"
+            },
+            "detectionPercent": {
+                "value": "11",
+                "type": "SLIDER",
+                "name": "  Detection Percent",
+                "min": "1",
+                "max": "100",
+                "step": "10"
+            },
+            "fixedCOA": {
+                "value": "250",
+                "type": "NUMBER",
+                "name": "  Fixed Cost of Attack ($)",
+                "min": "1",
+                "max": "365",
+                "step": "1"
+            },
+            "fixedDMG": {
+                "value": "1000",
+                "type": "NUMBER",
+                "name": "  Fixed Damage ($)",
+                "min": "1",
+                "max": "10000",
+                "step": "1"
             },
             "detectTime": {
-                "value": "100",
+                "value": "3",
                 "type": "NUMBER",
-                "name": " Detection Time",
-                "min": "0",
+                "name": "  Detection Time (in days)",
+                "min": "1",
                 "max": "365",
                 "step": "1"
             },
             "repairCost": {
-                "value": "100",
+                "value": "200",
                 "type": "NUMBER",
-                "name": " Repair Cost",
-                "min": "0",
+                "name": "  Repair Cost ($)",
+                "min": "1",
                 "max": "100000",
                 "step": "1"
             },
             "repairTime": {
-                "value": "1000",
+                "value": "20",
                 "type": "NUMBER",
-                "name": " Repair Time",
-                "min": "0",
+                "name": "  Repair Time (in days)",
+                "min": "1",
                 "max": "100000",
                 "step": "1"
             }
@@ -190,7 +350,7 @@ var object = [{
         "cssClass": "ATTACK EVENT",
         "ports": [{
             "type": "draw2d.OutputPort",
-            "id": "437d4287-2fb8-eeda-f388-ffdb47dde3b4",
+            "id": "57b09bed-c264-70dd-2cec-f4c37fc15603",
             "width": 10,
             "height": 10,
             "alpha": 1,
@@ -218,9 +378,9 @@ var object = [{
     },
     {
         "type": "FAILURE EVENT",
-        "id": "4f5d21c9-2ea9-aafd-aca9-f172abf4b964",
-        "x": 260,
-        "y": 540,
+        "id": "fc841c16-9220-1bec-4da7-4a94148f0699",
+        "x": 720,
+        "y": 480,
         "width": 100,
         "height": 50,
         "alpha": 1,
@@ -228,60 +388,58 @@ var object = [{
         "draggable": true,
         "angle": 0,
         "userData": {
-            "Label": "FAILURE EVENT",
+            "Label": " Pipeline break",
             "noOfPhases": {
-                "value": "3",
+                "value": "4",
                 "type": "SLIDER",
-                "name": " No of Phases",
-                "min": "0",
+                "name": "No of Phases",
+                "min": "1",
                 "max": "12",
                 "step": "1"
             },
             "thresholdPhase": {
                 "value": "2",
                 "type": "SLIDER",
-                "name": " Threshhold Phase",
-                "min": "0",
-                "max": "365",
-                "step": "3"
+                "name": "Threshhold Phase",
+                "min": "1",
+                "max": "12",
+                "step": "1"
             },
             "meanTTF": {
-                "value": "300",
+                "value": "90",
                 "type": "NUMBER",
-                "name": " Mean time to Failure",
-                "min": "0",
+                "name": "Mean time to Failure (in days)",
+                "min": "1",
                 "max": "365",
-                "step": "3"
+                "step": "1"
             },
             "repairCost": {
-                "value": "100",
+                "value": "10000",
                 "type": "NUMBER",
-                "name": " Repair Cost",
-                "min": "0",
+                "name": "Repair Cost ($)",
+                "min": "1",
                 "max": "10000",
                 "step": "1"
             },
             "repairTime": {
-                "value": "1000",
+                "value": "20",
                 "type": "NUMBER",
-                "name": " Repair Time",
-                "min": "0",
+                "name": "Repair Time (in days)",
+                "min": "1",
                 "max": "100000",
                 "step": "1"
             },
             "failureProbability": {
-                "value": "10",
+                "value": 100,
                 "type": "NUMBER",
-                "name": " Failure Probability",
-                "min": "0",
-                "max": "100",
-                "step": "1"
+                "name": "Failure Probability",
+                "hide": true
             }
         },
         "cssClass": "FAILURE EVENT",
         "ports": [{
             "type": "draw2d.OutputPort",
-            "id": "4b36137b-7580-57f7-b1b1-d5f7f92fc62b",
+            "id": "1dd133cc-3e34-2152-2386-712c2ba31125",
             "width": 10,
             "height": 10,
             "alpha": 1,
@@ -308,186 +466,10 @@ var object = [{
         "dasharray": null
     },
     {
-        "type": "OR Gate",
-        "id": "0c0b4c70-1fec-2c57-e25d-430d9cde1459",
-        "x": 420,
-        "y": 400,
-        "width": 70,
-        "height": 70,
-        "alpha": 1,
-        "selectable": true,
-        "draggable": true,
-        "angle": 0,
-        "userData": {
-            "Label": "OR Gate"
-        },
-        "cssClass": "OR Gate",
-        "ports": [{
-                "type": "draw2d.InputPort",
-                "id": "122bdb1c-86cf-40fc-6ee5-0d5051ff5d79",
-                "width": 10,
-                "height": 10,
-                "alpha": 1,
-                "selectable": false,
-                "draggable": true,
-                "angle": 0,
-                "userData": {},
-                "cssClass": "draw2d_InputPort",
-                "bgColor": "rgba(79,104,112,1)",
-                "color": "rgba(27,27,27,1)",
-                "stroke": 1,
-                "dasharray": null,
-                "maxFanOut": 9007199254740991,
-                "name": "input0",
-                "semanticGroup": "global",
-                "port": "draw2d.InputPort",
-                "locator": "draw2d.layout.locator.PortLocator",
-                "locatorAttr": {}
-            },
-            {
-                "type": "draw2d.InputPort",
-                "id": "d531e1b6-62df-2233-5589-bfb62c64f5ee",
-                "width": 10,
-                "height": 10,
-                "alpha": 1,
-                "selectable": false,
-                "draggable": true,
-                "angle": 0,
-                "userData": {},
-                "cssClass": "draw2d_InputPort",
-                "bgColor": "rgba(79,104,112,1)",
-                "color": "rgba(27,27,27,1)",
-                "stroke": 1,
-                "dasharray": null,
-                "maxFanOut": 9007199254740991,
-                "name": "input1",
-                "semanticGroup": "global",
-                "port": "draw2d.InputPort",
-                "locator": "draw2d.layout.locator.PortLocator",
-                "locatorAttr": {}
-            },
-            {
-                "type": "draw2d.OutputPort",
-                "id": "8bc77f39-38b3-a4b3-eb48-4a36ec99103a",
-                "width": 10,
-                "height": 10,
-                "alpha": 1,
-                "selectable": false,
-                "draggable": true,
-                "angle": 0,
-                "userData": {},
-                "cssClass": "draw2d_OutputPort",
-                "bgColor": "rgba(79,104,112,1)",
-                "color": "rgba(27,27,27,1)",
-                "stroke": 1,
-                "dasharray": null,
-                "maxFanOut": 9007199254740991,
-                "name": "output0",
-                "semanticGroup": "global",
-                "port": "draw2d.OutputPort",
-                "locator": "draw2d.layout.locator.PortLocator",
-                "locatorAttr": {}
-            }
-        ],
-        "bgColor": "rgba(0,0,0,0)",
-        "color": "rgba(27,27,27,1)",
-        "stroke": 0,
-        "radius": 0,
-        "dasharray": null
-    },
-    {
-        "type": "AND Gate",
-        "id": "b35b25fc-0cfd-8942-1117-cbd67d71fe95",
-        "x": 630,
-        "y": 280,
-        "width": 70,
-        "height": 70,
-        "alpha": 1,
-        "selectable": true,
-        "draggable": true,
-        "angle": 0,
-        "userData": {
-            "Label": "AND Gate"
-        },
-        "cssClass": "AND Gate",
-        "ports": [{
-                "type": "draw2d.InputPort",
-                "id": "c9a724a7-8b71-ae58-235a-e73107b37a68",
-                "width": 10,
-                "height": 10,
-                "alpha": 1,
-                "selectable": false,
-                "draggable": true,
-                "angle": 0,
-                "userData": {},
-                "cssClass": "draw2d_InputPort",
-                "bgColor": "rgba(79,104,112,1)",
-                "color": "rgba(27,27,27,1)",
-                "stroke": 1,
-                "dasharray": null,
-                "maxFanOut": 9007199254740991,
-                "name": "input0",
-                "semanticGroup": "global",
-                "port": "draw2d.InputPort",
-                "locator": "draw2d.layout.locator.PortLocator",
-                "locatorAttr": {}
-            },
-            {
-                "type": "draw2d.InputPort",
-                "id": "bd5baa3a-df82-7cfa-e77f-7433192d6548",
-                "width": 10,
-                "height": 10,
-                "alpha": 1,
-                "selectable": false,
-                "draggable": true,
-                "angle": 0,
-                "userData": {},
-                "cssClass": "draw2d_InputPort",
-                "bgColor": "rgba(79,104,112,1)",
-                "color": "rgba(27,27,27,1)",
-                "stroke": 1,
-                "dasharray": null,
-                "maxFanOut": 9007199254740991,
-                "name": "input1",
-                "semanticGroup": "global",
-                "port": "draw2d.InputPort",
-                "locator": "draw2d.layout.locator.PortLocator",
-                "locatorAttr": {}
-            },
-            {
-                "type": "draw2d.OutputPort",
-                "id": "62d98343-0ff8-62e4-c6a3-6c8b2226619d",
-                "width": 10,
-                "height": 10,
-                "alpha": 1,
-                "selectable": false,
-                "draggable": true,
-                "angle": 0,
-                "userData": {},
-                "cssClass": "draw2d_OutputPort",
-                "bgColor": "rgba(79,104,112,1)",
-                "color": "rgba(27,27,27,1)",
-                "stroke": 1,
-                "dasharray": null,
-                "maxFanOut": 9007199254740991,
-                "name": "output0",
-                "semanticGroup": "global",
-                "port": "draw2d.OutputPort",
-                "locator": "draw2d.layout.locator.PortLocator",
-                "locatorAttr": {}
-            }
-        ],
-        "bgColor": "rgba(0,0,0,0)",
-        "color": "rgba(27,27,27,1)",
-        "stroke": 0,
-        "radius": 0,
-        "dasharray": null
-    },
-    {
-        "type": "TOP EVENT",
-        "id": "3a9c2a7b-bc25-3198-ff22-53baaa3d014c",
-        "x": 610,
-        "y": 100,
+        "type": "FAILURE EVENT",
+        "id": "a1c7eb39-d8ca-d810-8350-4da839de6479",
+        "x": 960,
+        "y": 480,
         "width": 100,
         "height": 50,
         "alpha": 1,
@@ -495,19 +477,58 @@ var object = [{
         "draggable": true,
         "angle": 0,
         "userData": {
-            "inspFreq": {
-                "value": "4",
+            "Label": "Protection failure",
+            "noOfPhases": {
+                "value": "1",
+                "type": "SLIDER",
+                "name": "  No of Phases",
+                "min": "1",
+                "max": "12",
+                "step": "1"
+            },
+            "thresholdPhase": {
+                "value": "1",
+                "type": "SLIDER",
+                "name": "  Threshhold Phase",
+                "min": "1",
+                "max": "12",
+                "step": "1"
+            },
+            "meanTTF": {
+                "value": "45",
                 "type": "NUMBER",
-                "name": " Inspection Frequency",
-                "min": "0",
+                "name": "  Mean time to Failure (in days)",
+                "min": "1",
+                "max": "365",
+                "step": "1"
+            },
+            "repairCost": {
+                "value": "500",
+                "type": "NUMBER",
+                "name": "  Repair Cost ($)",
+                "min": "1",
                 "max": "10000",
                 "step": "1"
+            },
+            "repairTime": {
+                "value": "5",
+                "type": "NUMBER",
+                "name": "  Repair Time (in days)",
+                "min": "1",
+                "max": "100000",
+                "step": "1"
+            },
+            "failureProbability": {
+                "value": 100,
+                "type": "NUMBER",
+                "hide": true,
+                "name": ""
             }
         },
-        "cssClass": "TOP EVENT",
+        "cssClass": "FAILURE EVENT",
         "ports": [{
-            "type": "draw2d.InputPort",
-            "id": "623c1bea-813d-207e-a736-ba19ea08aeb4",
+            "type": "draw2d.OutputPort",
+            "id": "3d3ff6f0-50cc-5a87-b295-08c3bc5d2336",
             "width": 10,
             "height": 10,
             "alpha": 1,
@@ -515,44 +536,203 @@ var object = [{
             "draggable": true,
             "angle": 0,
             "userData": {},
-            "cssClass": "draw2d_InputPort",
+            "cssClass": "draw2d_OutputPort",
             "bgColor": "rgba(79,104,112,1)",
             "color": "rgba(27,27,27,1)",
             "stroke": 1,
             "dasharray": null,
             "maxFanOut": 9007199254740991,
-            "name": "input0",
+            "name": "output0",
             "semanticGroup": "global",
-            "port": "draw2d.InputPort",
+            "port": "draw2d.OutputPort",
             "locator": "draw2d.layout.locator.PortLocator",
             "locatorAttr": {}
         }],
-        "bgColor": "rgba(0,163,246,1)",
+        "bgColor": "rgba(192,43,29,1)",
         "color": "rgba(27,27,27,1)",
         "stroke": 1,
         "radius": 0,
-        "dasharray": null,
-        "vertices": [{
-                "x": 660,
-                "y": 100
+        "dasharray": null
+    },
+    {
+        "type": "SAND Gate",
+        "id": "fd6a779b-6766-319a-d4a4-6a77164492b6",
+        "x": 860,
+        "y": 280,
+        "width": 60,
+        "height": 80,
+        "alpha": 1,
+        "selectable": true,
+        "draggable": true,
+        "angle": 0,
+        "userData": {
+            "Label": "SAND Gate"
+        },
+        "cssClass": "SAND Gate",
+        "ports": [{
+                "type": "draw2d.InputPort",
+                "id": "b7d589d5-82de-e7f5-2f16-07d15df9396d",
+                "width": 10,
+                "height": 10,
+                "alpha": 1,
+                "selectable": false,
+                "draggable": true,
+                "angle": 0,
+                "userData": {},
+                "cssClass": "draw2d_InputPort",
+                "bgColor": "rgba(79,104,112,1)",
+                "color": "rgba(27,27,27,1)",
+                "stroke": 1,
+                "dasharray": null,
+                "maxFanOut": 9007199254740991,
+                "name": "input0",
+                "semanticGroup": "global",
+                "port": "draw2d.InputPort",
+                "locator": "draw2d.layout.locator.PortLocator",
+                "locatorAttr": {}
             },
             {
-                "x": 710,
-                "y": 125
+                "type": "draw2d.InputPort",
+                "id": "7fa95c11-ea7a-72b4-b46e-32f03343f51c",
+                "width": 10,
+                "height": 10,
+                "alpha": 1,
+                "selectable": false,
+                "draggable": true,
+                "angle": 0,
+                "userData": {},
+                "cssClass": "draw2d_InputPort",
+                "bgColor": "rgba(79,104,112,1)",
+                "color": "rgba(27,27,27,1)",
+                "stroke": 1,
+                "dasharray": null,
+                "maxFanOut": 9007199254740991,
+                "name": "input1",
+                "semanticGroup": "global",
+                "port": "draw2d.InputPort",
+                "locator": "draw2d.layout.locator.PortLocator",
+                "locatorAttr": {}
             },
             {
-                "x": 660,
-                "y": 150
-            },
-            {
-                "x": 610,
-                "y": 125
+                "type": "draw2d.OutputPort",
+                "id": "c2453413-8023-ab96-7ef8-303a0c639f27",
+                "width": 10,
+                "height": 10,
+                "alpha": 1,
+                "selectable": false,
+                "draggable": true,
+                "angle": 0,
+                "userData": {},
+                "cssClass": "draw2d_OutputPort",
+                "bgColor": "rgba(79,104,112,1)",
+                "color": "rgba(27,27,27,1)",
+                "stroke": 1,
+                "dasharray": null,
+                "maxFanOut": 9007199254740991,
+                "name": "output0",
+                "semanticGroup": "global",
+                "port": "draw2d.OutputPort",
+                "locator": "draw2d.layout.locator.PortLocator",
+                "locatorAttr": {}
             }
-        ]
+        ],
+        "bgColor": "rgba(0,0,0,0)",
+        "color": "rgba(27,27,27,1)",
+        "stroke": 0,
+        "radius": 0,
+        "dasharray": null
+    },
+    {
+        "type": "SAND Gate",
+        "id": "10ca8d7a-4891-ff7e-b751-dd7c6fff33ae",
+        "x": 380,
+        "y": 310,
+        "width": 70,
+        "height": 70,
+        "alpha": 1,
+        "selectable": true,
+        "draggable": true,
+        "angle": 0,
+        "userData": {
+            "Label": "SAND Gate"
+        },
+        "cssClass": "SAND Gate",
+        "ports": [{
+                "type": "draw2d.InputPort",
+                "id": "f5f7c1b5-b80c-a7cc-833b-109bcc14a104",
+                "width": 10,
+                "height": 10,
+                "alpha": 1,
+                "selectable": false,
+                "draggable": true,
+                "angle": 0,
+                "userData": {},
+                "cssClass": "draw2d_InputPort",
+                "bgColor": "rgba(79,104,112,1)",
+                "color": "rgba(27,27,27,1)",
+                "stroke": 1,
+                "dasharray": null,
+                "maxFanOut": 9007199254740991,
+                "name": "input0",
+                "semanticGroup": "global",
+                "port": "draw2d.InputPort",
+                "locator": "draw2d.layout.locator.PortLocator",
+                "locatorAttr": {}
+            },
+            {
+                "type": "draw2d.InputPort",
+                "id": "c17dd260-28bb-202f-387b-3b9c09342024",
+                "width": 10,
+                "height": 10,
+                "alpha": 1,
+                "selectable": false,
+                "draggable": true,
+                "angle": 0,
+                "userData": {},
+                "cssClass": "draw2d_InputPort",
+                "bgColor": "rgba(79,104,112,1)",
+                "color": "rgba(27,27,27,1)",
+                "stroke": 1,
+                "dasharray": null,
+                "maxFanOut": 9007199254740991,
+                "name": "input1",
+                "semanticGroup": "global",
+                "port": "draw2d.InputPort",
+                "locator": "draw2d.layout.locator.PortLocator",
+                "locatorAttr": {}
+            },
+            {
+                "type": "draw2d.OutputPort",
+                "id": "92e455f7-e4e7-2950-82f7-3f5f6547d5ac",
+                "width": 10,
+                "height": 10,
+                "alpha": 1,
+                "selectable": false,
+                "draggable": true,
+                "angle": 0,
+                "userData": {},
+                "cssClass": "draw2d_OutputPort",
+                "bgColor": "rgba(79,104,112,1)",
+                "color": "rgba(27,27,27,1)",
+                "stroke": 1,
+                "dasharray": null,
+                "maxFanOut": 9007199254740991,
+                "name": "output0",
+                "semanticGroup": "global",
+                "port": "draw2d.OutputPort",
+                "locator": "draw2d.layout.locator.PortLocator",
+                "locatorAttr": {}
+            }
+        ],
+        "bgColor": "rgba(0,0,0,0)",
+        "color": "rgba(27,27,27,1)",
+        "stroke": 0,
+        "radius": 0,
+        "dasharray": null
     },
     {
         "type": "draw2d.Connection",
-        "id": "c19d6a82-7c0b-9318-06f3-bca8b552ab90",
+        "id": "39d0809c-0c43-1de5-75b3-4f8e8d6d4fd0",
         "alpha": 1,
         "selectable": true,
         "draggable": true,
@@ -565,32 +745,36 @@ var object = [{
         "outlineColor": "rgba(0,0,0,0)",
         "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
         "vertex": [{
-                "x": 850,
-                "y": 440
+                "x": 655,
+                "y": 160
             },
             {
-                "x": 850,
-                "y": 350
+                "x": 655,
+                "y": 135
             },
             {
-                "x": 700,
-                "y": 350
+                "x": 650,
+                "y": 135
+            },
+            {
+                "x": 650,
+                "y": 110
             }
         ],
         "router": "draw2d.layout.connection.CircuitConnectionRouter",
         "radius": 3,
         "source": {
-            "node": "3e57c736-8760-c341-9b7e-a7efd755d9fe",
+            "node": "1b99d7cb-7bc2-2791-549e-e88b35958f7c",
             "port": "output0"
         },
         "target": {
-            "node": "b35b25fc-0cfd-8942-1117-cbd67d71fe95",
-            "port": "input1"
+            "node": "bda07307-d321-7209-4799-a280b9714b61",
+            "port": "input0"
         }
     },
     {
         "type": "draw2d.Connection",
-        "id": "0613387b-1fe7-64ed-b409-b9bfecbb1aa4",
+        "id": "8801c65a-913d-116a-f7f1-ee53231d51f5",
         "alpha": 1,
         "selectable": true,
         "draggable": true,
@@ -603,112 +787,32 @@ var object = [{
         "outlineColor": "rgba(0,0,0,0)",
         "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
         "vertex": [{
-                "x": 665,
+                "x": 890,
                 "y": 280
             },
             {
-                "x": 665,
-                "y": 215
+                "x": 890,
+                "y": 230
             },
             {
-                "x": 660,
-                "y": 215
-            },
-            {
-                "x": 660,
-                "y": 150
+                "x": 690,
+                "y": 230
             }
         ],
         "router": "draw2d.layout.connection.CircuitConnectionRouter",
         "radius": 3,
         "source": {
-            "node": "b35b25fc-0cfd-8942-1117-cbd67d71fe95",
+            "node": "fd6a779b-6766-319a-d4a4-6a77164492b6",
             "port": "output0"
         },
         "target": {
-            "node": "3a9c2a7b-bc25-3198-ff22-53baaa3d014c",
-            "port": "input0"
-        }
-    },
-    {
-        "type": "draw2d.Connection",
-        "id": "c1cb7e44-be2b-72ec-569e-b70621845f5b",
-        "alpha": 1,
-        "selectable": true,
-        "draggable": true,
-        "angle": 0,
-        "userData": {},
-        "cssClass": "draw2d_Connection",
-        "stroke": 2,
-        "color": "rgba(18,156,228,1)",
-        "outlineStroke": 0,
-        "outlineColor": "rgba(0,0,0,0)",
-        "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
-        "vertex": [{
-                "x": 310,
-                "y": 540
-            },
-            {
-                "x": 310,
-                "y": 470
-            },
-            {
-                "x": 420,
-                "y": 470
-            }
-        ],
-        "router": "draw2d.layout.connection.CircuitConnectionRouter",
-        "radius": 3,
-        "source": {
-            "node": "4f5d21c9-2ea9-aafd-aca9-f172abf4b964",
-            "port": "output0"
-        },
-        "target": {
-            "node": "0c0b4c70-1fec-2c57-e25d-430d9cde1459",
-            "port": "input0"
-        }
-    },
-    {
-        "type": "draw2d.Connection",
-        "id": "b559e345-02d4-1379-7041-bce003eb308d",
-        "alpha": 1,
-        "selectable": true,
-        "draggable": true,
-        "angle": 0,
-        "userData": {},
-        "cssClass": "draw2d_Connection",
-        "stroke": 2,
-        "color": "rgba(18,156,228,1)",
-        "outlineStroke": 0,
-        "outlineColor": "rgba(0,0,0,0)",
-        "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
-        "vertex": [{
-                "x": 570,
-                "y": 540
-            },
-            {
-                "x": 570,
-                "y": 470
-            },
-            {
-                "x": 490,
-                "y": 470
-            }
-        ],
-        "router": "draw2d.layout.connection.CircuitConnectionRouter",
-        "radius": 3,
-        "source": {
-            "node": "59a700bb-c6b3-6f62-3351-eaacbe44194d",
-            "port": "output0"
-        },
-        "target": {
-            "node": "0c0b4c70-1fec-2c57-e25d-430d9cde1459",
+            "node": "1b99d7cb-7bc2-2791-549e-e88b35958f7c",
             "port": "input1"
         }
     },
     {
         "type": "draw2d.Connection",
-        "id": "c0de17d0-c3e1-3fcd-766a-ec1e888dbfc5",
+        "id": "9bd325fb-a5db-2b64-8df8-62dd7ca24a70",
         "alpha": 1,
         "selectable": true,
         "draggable": true,
@@ -721,27 +825,179 @@ var object = [{
         "outlineColor": "rgba(0,0,0,0)",
         "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
         "vertex": [{
-                "x": 455,
-                "y": 400
+                "x": 415,
+                "y": 310
             },
             {
-                "x": 455,
-                "y": 350
+                "x": 415,
+                "y": 230
             },
             {
-                "x": 630,
-                "y": 350
+                "x": 620,
+                "y": 230
             }
         ],
         "router": "draw2d.layout.connection.CircuitConnectionRouter",
         "radius": 3,
         "source": {
-            "node": "0c0b4c70-1fec-2c57-e25d-430d9cde1459",
+            "node": "10ca8d7a-4891-ff7e-b751-dd7c6fff33ae",
             "port": "output0"
         },
         "target": {
-            "node": "b35b25fc-0cfd-8942-1117-cbd67d71fe95",
+            "node": "1b99d7cb-7bc2-2791-549e-e88b35958f7c",
             "port": "input0"
+        }
+    },
+    {
+        "type": "draw2d.Connection",
+        "id": "7197b700-8ce8-4d7d-15bb-465e240b11f5",
+        "alpha": 1,
+        "selectable": true,
+        "draggable": true,
+        "angle": 0,
+        "userData": {},
+        "cssClass": "draw2d_Connection",
+        "stroke": 2,
+        "color": "rgba(18,156,228,1)",
+        "outlineStroke": 0,
+        "outlineColor": "rgba(0,0,0,0)",
+        "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+        "vertex": [{
+                "x": 290,
+                "y": 480
+            },
+            {
+                "x": 290,
+                "y": 380
+            },
+            {
+                "x": 380,
+                "y": 380
+            }
+        ],
+        "router": "draw2d.layout.connection.CircuitConnectionRouter",
+        "radius": 3,
+        "source": {
+            "node": "dfbc58d1-75d3-333f-3d77-52bf930337e8",
+            "port": "output0"
+        },
+        "target": {
+            "node": "10ca8d7a-4891-ff7e-b751-dd7c6fff33ae",
+            "port": "input0"
+        }
+    },
+    {
+        "type": "draw2d.Connection",
+        "id": "3aff0990-fc25-5a29-7e6d-6c98775a2a8f",
+        "alpha": 1,
+        "selectable": true,
+        "draggable": true,
+        "angle": 0,
+        "userData": {},
+        "cssClass": "draw2d_Connection",
+        "stroke": 2,
+        "color": "rgba(18,156,228,1)",
+        "outlineStroke": 0,
+        "outlineColor": "rgba(0,0,0,0)",
+        "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+        "vertex": [{
+                "x": 770,
+                "y": 480
+            },
+            {
+                "x": 770,
+                "y": 360
+            },
+            {
+                "x": 860,
+                "y": 360
+            }
+        ],
+        "router": "draw2d.layout.connection.CircuitConnectionRouter",
+        "radius": 3,
+        "source": {
+            "node": "fc841c16-9220-1bec-4da7-4a94148f0699",
+            "port": "output0"
+        },
+        "target": {
+            "node": "fd6a779b-6766-319a-d4a4-6a77164492b6",
+            "port": "input0"
+        }
+    },
+    {
+        "type": "draw2d.Connection",
+        "id": "aada3d01-86b7-86f0-7052-72a4b5665814",
+        "alpha": 1,
+        "selectable": true,
+        "draggable": true,
+        "angle": 0,
+        "userData": {},
+        "cssClass": "draw2d_Connection",
+        "stroke": 2,
+        "color": "rgba(18,156,228,1)",
+        "outlineStroke": 0,
+        "outlineColor": "rgba(0,0,0,0)",
+        "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+        "vertex": [{
+                "x": 1010,
+                "y": 480
+            },
+            {
+                "x": 1010,
+                "y": 360
+            },
+            {
+                "x": 920,
+                "y": 360
+            }
+        ],
+        "router": "draw2d.layout.connection.CircuitConnectionRouter",
+        "radius": 3,
+        "source": {
+            "node": "a1c7eb39-d8ca-d810-8350-4da839de6479",
+            "port": "output0"
+        },
+        "target": {
+            "node": "fd6a779b-6766-319a-d4a4-6a77164492b6",
+            "port": "input1"
+        }
+    },
+    {
+        "type": "draw2d.Connection",
+        "id": "a1503bdb-543c-23d8-a1e0-97dcffa3fa89",
+        "alpha": 1,
+        "selectable": true,
+        "draggable": true,
+        "angle": 0,
+        "userData": {},
+        "cssClass": "draw2d_Connection",
+        "stroke": 2,
+        "color": "rgba(18,156,228,1)",
+        "outlineStroke": 0,
+        "outlineColor": "rgba(0,0,0,0)",
+        "policy": "draw2d.policy.line.LineSelectionFeedbackPolicy",
+        "vertex": [{
+                "x": 530,
+                "y": 480
+            },
+            {
+                "x": 530,
+                "y": 380
+            },
+            {
+                "x": 450,
+                "y": 380
+            }
+        ],
+        "router": "draw2d.layout.connection.CircuitConnectionRouter",
+        "radius": 3,
+        "source": {
+            "node": "9c761841-0afe-c223-2b8b-086323b41ba1",
+            "port": "output0"
+        },
+        "target": {
+            "node": "10ca8d7a-4891-ff7e-b751-dd7c6fff33ae",
+            "port": "input1"
         }
     }
 ]

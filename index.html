@@ -63,14 +63,6 @@
         var line = null;
         var circle = null;
 
-        const MOUSESTATUS = {
-            mode: "SELECT"
-        };
-
-        function stepMap(key) {
-            MOUSESTATUS.mode = key;
-        }
-
 
         document.addEventListener("DOMContentLoaded", function() {
 
@@ -109,6 +101,10 @@
 
             $('#attackTreeDataSubmit').click(function() {
                 parser(JSON.parse($('#attackTreeData').val()), canvas, draw2d);
+            });
+
+            $('#pollutiontree').click(function() {
+                parser(pollutionTree, canvas, draw2d);
             });
 
             $("#runButton").click(function() {
@@ -301,8 +297,7 @@
                       Example Trees
                     </a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink" id="steps">
-                                <li><a class="dropdown-item" href="#" onclick="stepMap('OR');">Example 1</a></li>
-                                <li><a class="dropdown-item" href="#" onclick="stepMap('AND');">Example 2</a></li>
+                                <li><a class="dropdown-item" href="#" id="pollutiontree">Pollution Tree</a></li>
 
                             </ul>
                         </li>
